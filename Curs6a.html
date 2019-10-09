@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>tooltip</title>
+    <style>
+        .tooltip-div {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: relative;
+        }
+        /* .tooltip-div:before {
+            content: "before";
+            background: yellow;
+            border-radius: 5px;
+        } */
+        /* .tooltip-div:after {
+            content: "after";
+            background: green;
+            border-radius: 5px;
+        } */
+        .tooltip-div:hover:after {
+            content: attr(data-info);
+            position: absolute;
+            background: green;
+            padding: 5px;
+            border-radius: 5px;
+            top:100%;
+            left:50%;
+            transform: translate(-50%);
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+        }
+        .tooltip-div:hover:before {
+            content: "";
+            position: absolute;
+            border-top: 8p transparent solid;
+            border-right: 8px transparent solid;
+            border-bottom: 8px green solid;
+            border-left: 8px transparent solid;
+            top:85%;
+            left:30%;
+        }
+
+        .mock {
+            display:inline-block;
+            width: 0;
+            height: 0;
+            border-top: 40p transparent;
+            border-right: 40px transparent;
+            border-bottom: 40px green solid;
+            border-left: 40px transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div data-info="tooltip1" class="tooltip-div">textul din div</div>
+    <div data-info="tooltip2" class="tooltip-div">textul din div</div>
+    <div data-info="tooltip3 tooltip3 tooltip3" class="tooltip-div">textul din div</div>
+    <div data-info="tooltip4" class="tooltip-div">textul din div</div>
+    <div class="mock"></div>
+</body>
+
+
+</html>
