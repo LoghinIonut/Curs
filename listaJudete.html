@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+<script> 
+  var judete = "Alba, Arad, Argeş, Bacău, Bihor, Bistriţa-Năsăud, Botoşani, Braşov, Brăila, Buzău, Caraş-Severin, Călăraşi, Cluj, Constanţa, Covasna, Dâmboviţa, Dolj, Galaţi, Giurgiu, Gorj, Harghita, Hunedoara, Ialomiţa, Iaşi, Ilfov, Maramureş, Mehedinţi, Mureş, Neamţ, Olt, Prahova, Satu Mare, Sălaj, Sibiu, Suceava, Teleorman, Timiş, Tulcea, Vaslui, Vâlcea, Vrancea"
+  var judeteteleRomaniei = judete.split(",");
+  console.log(judeteteleRomaniei);
+  document.addEventListener("DOMContentLoaded", start);
+
+  function start() {
+      var select = document.createElement("select");
+      var option;
+      for (var i = 0; i < judeteteleRomaniei.length; i++) {
+          option = document.createElement("option");
+          option.innerHTML = judeteteleRomaniei[i];
+          select.appendChild(option);
+          if (i=judeteteleRomaniei.length - 1) {
+              option.setAttribute("selected", "Vrancea") 
+          }
+
+      }
+      document.body.appendChild(select);
+      
+  }
+
+
+
+
+
+</script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
