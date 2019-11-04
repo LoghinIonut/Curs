@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+<script>
+   /* definim function nume (p1,p2,p3) { antet
+                      corp functie
+   }
+
+   apel : nume (  ,   ,   )
+
+   /n - nnew line
+   */
+    
+   console.warn("--------suma nr pana la n-------------")
+
+
+   var sumaPanaLa10 = sumaNumerelor(10)
+   console.log(sumaPanaLa10)
+   function sumaNumerelor(n) {
+       var suma = 0;
+       for (var i = 1 ; i <= n ; i++) {
+            //suma += i;
+            suma = sumaADouaNumere(suma,i)
+       } 
+       return suma;
+   }
+
+   function sumaADouaNumere(a, b) {
+       return a+ b;
+   }
+
+</script>
+</head>
+
+<body>
+The content of the document......
+</body>
+
+</html>

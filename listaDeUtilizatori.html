@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+<script> 
+  var utilizatori = "Ana,Mihai,George,Ionel,Gigel"
+  var numeUtilizatori = utilizatori.split(",");
+  console.log(numeUtilizatori);
+  document.addEventListener("DOMContentLoaded", start);
+
+  function start() {
+      // creez element de tip ul
+      var ul = document.createElement("ul");
+      for (var i = 0; i < numeUtilizatori.length; i++) {
+          // creez element de tip li
+          li = document.createElement("li");
+          // setez textul din tagul li
+          li.innerHTML = numeUtilizatori[i];
+          // adaug element in ul
+          ul.appendChild(li);
+      }
+      //adaug lista in body
+      document.body.appendChild(ul);
+  }
+
+
+</script>
+
+</head>
+
+<body>
+The content of the document......
+</body>
+
+</html>

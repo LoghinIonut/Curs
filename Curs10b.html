@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+</head>
+<script>
+    var i = 0;
+    /* - bloc de cod intre {}
+    {
+        console.log("sunt in bloc de cod")
+    }
+    */
+    console.log("cod inainte de while")
+    while (i < 5) {
+        console.log(i);
+        i++;
+        //break; - iesi din bloc curent
+        //console.log("dupa break")
+        // acum revin la linia cu while (i < 5)
+    }
+    console.log("cod dupa while")
+    //debugger;
+
+    
+    console.warn("---------------------")
+    i = 0;
+    console.log("cod inainte while")
+    do {
+        console.log(i);
+        i++;
+    } while (i < 5)
+    console.log("cod dupa while");
+
+    console.warn("---------------------")
+    do {
+        console.log("am intrat odata in do while");
+    } while (false)
+    while (false) {
+        console.log("aici nu intra")
+    }
+
+    console.warn("---------------------")
+    console.log("cod inainte for")
+    for (var i = 0; i < 10; i++) {
+        console.log(i)
+    }
+    console.log("cod dupa for");
+
+    console.warn("---------------------")
+    var n = 123456;
+    var nrCifre = 0 ;
+    while (n > 0) {
+           nrCifre ++ ;
+           n = parseInt (n/10);
+    }
+    console.log("numar cifre este", nrCifre)
+
+</script>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

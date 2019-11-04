@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        body {
+            font-size: 0;
+        }
+
+        .patratRosu {
+            display: inline-block;
+            background: red;
+            width: 50px;
+            height: 50px;
+        }
+
+        .patratAlbastru {
+            display: inline-block;
+            background: blue;
+            width: 50px;
+            height: 50px;
+        }
+
+        .patratGreen {
+            display: inline-block;
+            background: green;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+    <script>
+        // se apeleaza automat functia din eveniment
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            var div;
+            var divParinte;
+            divParinte = document.createElement("div");
+            divParinte.style.width = "500px"
+            document.body.appendChild(divParinte);
+            for (var j = 0; j < 10; j++) {
+                for (var i = 0; i < 10; i++) {
+                    // creez un element html
+                    var div = document.createElement("div");
+                    div.id = "div-" + j + "-" + i;
+                    div.addEventListener("click", divClick);
+                    if (j % 2 == 0) {
+                        if (i % 2 == 0) {
+                            div.className = "patratRosu";
+                        } else {
+                            div.className = "patratAlbastru";
+                        }
+                    } else {
+                        if (i % 2 == 0) {
+                            div.className = "patratAlbastru";
+                        } else {
+                            div.className = "patratRosu";
+                        }
+
+                    }
+                    divParinte.appendChild(div);
+                }
+
+            }
+
+        }
+
+        function divClick(event) {
+            console.log("click");
+            var id = this.id;
+            var idSpart = id.split("-");
+            var j = parseInt(idSpart[1]);
+            var i = parseInt(idSpart[2]);
+            console.log(i, j);
+            if (this.className == "patratRosu" || this.className == "patratAlbastru") {
+                this.className = "patratGreen"
+            } else {
+                if (j % 2 == 0) {
+                    if (i % 2 == 0) {
+                        this.className = "patratRosu";
+                    } else {
+                        this.className = "patratAlbastru";
+                    }
+                  } else {
+                    if (i % 2 == 0) {
+                        this.className = "patratAlbastru";
+                    } else {
+                        this.className = "patratRosu";
+                    }
+
+                }
+                
+            }
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

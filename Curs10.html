@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>animatie bila</title>
+    <script>
+        var pozX = 0;
+        var pozY = 0;
+        var pas1 = 2;
+        var pas2 = 1;
+        var leftLimit = 0;
+        var rightLimit = 450;
+        var topLimit = 0;
+        var bottLimit = 450;
+        var div
+
+        document.addEventListener("DOMContentLoaded", start); //*
+
+        function start() {//*
+            div = document.getElementsByClassName("bila")[0];
+            div.style.left = pozX + "px";
+            div.style.top = pozY + "px"; // modific proprietati elem
+        }
+
+        setInterval(miscaBila, 10);
+
+        function miscaBila() {
+            pozX += pas1;
+            pozY += pas2;
+            if (pozX > rightLimit || pozX < leftLimit) {
+                console.log(pozX);
+                pas1 *= -1; // inverseaza directia
+            }
+                div.style.left = pozX + "px";
+                //div.style.width = pozX + "px";
+                //div.style.height = pozX + "px";
+            
+            if (pozY > topLimit || pozY < bottLimit) {
+                console.log(pozY);
+                pas2 *= -1; // inverseaza directia
+            }
+                div.style.bottom = pozY + "px";
+            }
+            /* while(conditie) {
+                executa cod
+            }
+
+            do {
+            } while(conditie)
+
+            for(var i=o, i<=n , i++)
+            */
+    </script>
+    <style>
+        .bila {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: red;
+            border-radius: 50%;
+            display: inline-block;
+            /*transform: translate(-50% -50%); */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bila"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script>
+
+        var a = 5;
+        if (a == 5) {
+            console.log("a este 5");
+        } else {
+            console.log("a nu este 5")
+        }
+
+        console.warn("---------------------")
+        // Math.random = [0,1] 
+        var numar = Math.round(Math.random() * 1000);  // restul r = [ 0,impartitor-1]
+        console.log(numar);
+        if (numar % 2 == 0) {
+            console.log("numarul este par");
+        } else {
+            console.log("numarul este impar");
+        }
+
+        var numar2 = Math.round(Math.random() * 1000);
+        console.log(numar2);
+        var ultimaCifra = numar2 % 10;
+        if (ultimaCifra % 2 == 0) {
+            console.log("numarul este par");
+        } else {
+            console.log("numarul este impar");
+        }
+        /*
+        var n = Math.round(Math.random() * 1000); */
+        var n = 1;
+        console.log("n = ", n);
+        if (n >= 0) {
+            if (n <= 500) {
+                console.log("apartine [0,500]");
+            } else {
+                if (n <= 1000) {
+                    console.log("apartine [500,1000]");
+                } else {
+                    console.log("n este mai mare ca 1000");
+                }
+            }
+
+        } else {
+            console.log("n este mai mic ca 0")
+        }
+
+        console.warn("---------------------")
+        //Maxim dintre 2 numere
+        var n1 = Math.round(Math.random() * 1000);
+        var n2 = Math.round(Math.random() * 1000);
+
+        console.log("n1 = ", n1);
+        console.log("n2 = ", n2);
+        if (n1 == n2) {
+            console.log("n1 este egal n2")
+
+        } else {
+            if (n1 > n2) {
+                console.log("maximul este n1");
+
+            }
+            else {
+                console.log("maximul este n2");
+
+            }
+        }
+
+        console.warn("---------------------")
+        //Maxim dintre 3 numere
+        var maxim;
+        var n1 = Math.round(Math.random() * 1000);
+        var n2 = Math.round(Math.random() * 1000);
+        var n3 = Math.round(Math.random() * 1000);
+        console.log("n1 = ", n1);
+        console.log("n2 = ", n2);
+        console.log("n3 = ", n3);
+        maxim = n1;
+        if (maxim < n2) {
+            maxim = n2;
+        }
+        if (maxim < n3) {
+            maxim = n3;
+        }
+        console.log("maximul este ", maxim);
+
+        console.warn("---------------------")
+        //Sortare 
+        var a1 = Math.round(Math.random() * 1000);
+        var a2 = Math.round(Math.random() * 1000);
+        var a3 = Math.round(Math.random() * 1000);
+        var aux;
+
+        if (a1 > a2) { // <=> a2 <= a1
+            //interschimbare
+            aux = a1;
+            a1 = a2;
+            a2 = aux;
+        } if (a1 > a3) {
+            aux = a1;
+            a1 = a3;
+            a3 = aux;
+        } if (a2 > a3) {
+            aux = a2;
+            a2 = a3;
+            a3 = aux;
+        }
+        console.log("numerele in ordine crescatoare sunt ", a1, a2, a3);
+
+
+        console.warn("---------------------")
+        //Tema    parseInt(n / 10) elimin ultima cifra din nr.
+        var szu = 100 + Math.round(Math.random() * 900);
+        console.log("numarul este", szu)
+        var s;
+        var z;
+        var u;
+        u = szu % 10
+        console.log("cifra unitatilor este ", u);
+        szu = parseInt(szu / 10)
+        z = szu % 10
+        console.log("cifra zecilor este ", z);
+        szu = parseInt(szu / 10)
+        s = szu % 10
+        console.log("cifra sutelor este ", s);
+
+
+
+
+        console.warn("---------------------")
+        //nr div
+        var d;
+        d = Math.round(Math.random() * 1000);
+        console.log("numarul este", d)
+        if (d % 3 == 0 && d % 5 == 0) {
+            console.log("numarul este divizibil cu 15")
+        } else {
+            console.log("numarul nu este divizibil cu 15")
+        }
+
+        console.warn("---------------------")
+        //numar din interval
+        var dd;
+        dd = Math.floor(Math.random() * (1000 - 100)) + 100;
+        console.log("numarul este", dd);
+
+        console.warn("---------------------")
+        //ordinea cifrelor unui nr
+        var n = 100 + Math.round(Math.random() * 900);
+        console.log("numarul este", n)
+        var s;
+        var z;
+        var u;
+        u = n % 10
+        n = parseInt(n / 10)
+        z = n % 10
+        n = parseInt(n / 10)
+        s = n % 10
+        console.log(s, z, u);
+        if (s < z && z < u) {
+            console.log("cifrele sun in ordine crescatoare")
+        } else if (u < z && z < s) {
+            console.log("cifrele sun in ordine descrescatoare")
+        } else {
+            console.log("cifrele au o ordine aleatoare")
+        }
+
+        console.warn("---------------------")
+        //nr
+        var nr = Math.round(Math.random() * 5);
+        if (nr == 0) {
+            console.log(0);
+        } else if (nr == 1) {
+            console.log(1);
+        } else if (nr == 2) {
+            console.log(2);
+        } else if (nr == 3) {
+            console.log(3);
+        } else if (nr == 4) {
+            console.log(4);
+        } else if (nr == 5) {
+            console.log(5); 
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

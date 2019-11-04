@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+</head>
+<script>
+    var a = []
+    for (var i = 0; i < 10; i++) {
+        a.push(i)
+    }
+    console.log(a);
+
+    var newA = a.slice(0,5);
+    console.log(newA);
+    console.log(a);
+
+    var newA2 = a.slice(2,6);
+    console.log(newA2)
+
+// concat !!!
+
+
+// reverse !!!
+console.log("---------------") // nu merge intoarce vector original
+//for (var j = 0; j < a.length; j++){
+ //   a.unshift(a.pop()); }
+// console.log(a)
+
+var b = []  // merge
+for (var k = a.length-1; k>=0; k--) {
+    b.push(a[k]);
+}
+console.log(b);
+
+//reverse 
+console.log("---------------")
+var aux;
+for (var l = 0; l < a.length/2; l++) {
+    aux=a[l] ;
+    a[l] = a[a.length - 1 - l];
+    a[a.length - 1 - l] = aux ;
+}
+console.log(a);
+
+
+
+
+
+ 
+
+
+
+
+</script>
+
+<body>
+The content of the document......
+</body>
+
+</html>

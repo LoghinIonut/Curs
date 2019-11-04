@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        var estePrim = isPrime(131);
+        console.log(estePrim);
+        function isPrime(n) {
+            var nrDivizori = 0;
+            if (n > 2 && n % 2 == 0) {
+                return false; // console.log("numarul nu este prim")
+            } else if (n == 2) {
+                return true; // console.log("numarul este prim")
+            }
+            for (var i = 3; i <= n / 2; i += 2) {
+                if (n % i == 0) {
+                    nrDivizori++;
+                }
+            }
+            if (nrDivizori == 0) {
+                return true; //console.log("numarul este prim")
+            } else {
+                return false; // console.log("numarul nu este prim")
+            }
+        }
+
+        console.warn("---------Palindrom------------")
+        n = 123321;
+        var palindrom = palindrom(n)
+        console.log(palindrom);
+        function palindrom(n) {
+            var nInvers = 0;
+            var m = n;
+            var ultimaCifra;
+            while (n > 0) {
+                ultimaCifra = n % 10;
+                nInvers *= 10;
+                nInvers += ultimaCifra;
+                n = parseInt(n / 10)
+            }
+            if (nInvers == m) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        console.warn("---------Invers------------")
+        n = 321
+        var nInvers = nInvers(n)
+        console.log(nInvers)
+        function nInvers(n) {
+            var sumaCifrelor = 0;
+            var cifra;
+            while (n > 0) {
+                cifra = n % 10;
+                sumaCifrelor *= 10;
+                sumaCifrelor += cifra;
+                n = parseInt(n / 10);
+            }
+            return sumaCifrelor;
+        }
+
+        console.warn("---------Palindrom 2------------")
+        n = 123321;
+        console.log(palindrom);
+        function palindrom(n) {
+            nInvers(n) 
+                var m;
+                if (nInvers == m) {
+                    return true
+                } else {
+                    return false
+                }
+            
+        }
+
+
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

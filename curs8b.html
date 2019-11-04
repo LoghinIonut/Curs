@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script>
+        var a = 5;
+        console.log(a);
+    </script>
+    <style>
+        body {
+            font-size: 0;
+        }
+
+        .container {
+            background: black;
+            width: 100%;
+            padding: 5px;
+
+        }
+
+        .top {
+            position: relative;
+            display: inline-block;
+            background: red;
+            height: 100px;
+            width: 100%;
+            margin: 5px;
+            /* width: calc(50% - 2.5px);*/
+        }
+
+        .inner-div1a {
+            position: absolute;
+            width: calc(25% - 10px);
+            height: 90px;
+            background: green;
+            margin: 5px;
+            
+            
+        }
+        .inner-div1b {
+            position: absolute;
+            width: calc(25% - 10px);
+            height: 90px;
+            background: green;
+            margin: 5px;
+            right: calc(25% - 10px);
+            
+        }
+        .inner-div1c {
+            position: absolute;
+            width: calc(25% - 10px);
+            height: 90px;
+            background: green;
+            margin: 5px;
+            right: calc(50% - 10px);
+            
+        }
+        .inner-div1d {
+            position: absolute;
+            width: calc(25% - 10px);
+            height: 90px;
+            background: green;
+            margin: 5px;
+            right: calc(75% - 10px);
+        }
+
+        .middle {
+            height: 100px;
+            width: 100%;
+            margin: 5px;
+            background: yellow;
+        }
+
+        .bottom {
+            display: flex;
+            height: 100px;
+            width: 100%;
+            margin: 5px;
+            background: blue;
+        }
+
+        .inner-div2 {
+            flex: 1;
+            height: 90px;
+            background: rgb(32, 78, 32);
+            margin: 5px;
+        }
+             
+             /* flex:wrap */
+        @media only screen and (max-width: 600px) {
+            .top {
+                background: red;
+                 height: 100%;
+
+            }
+
+            .inner-div1a {
+            position: absolute;
+            width: calc(50% - 10px);
+            height: 90px;
+            background: green;
+            margin: 5px;
+
+            .bottom {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="inner-div1a"></div>
+            <div class="inner-div1b"></div>
+            <div class="inner-div1c"></div>
+            <div class="inner-div1d"></div>
+        </div>
+        <div class="middle"> </div>
+        <div class="bottom">
+            <div class="inner-div2"></div>
+            <div class="inner-div2"></div>
+        </div>
+    </div>
+</body>
+
+</html>

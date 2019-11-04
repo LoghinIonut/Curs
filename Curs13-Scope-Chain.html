@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+<script>
+   // scope-chaining  = va cauta in sus in functie pana va da de o variuablia cu valoarea data
+   var a = 5;
+    function foo1() {
+        var a = 6;
+          function foo2(){
+              var a = 7;
+              function foo3() {
+                  console.log(a);
+              }
+          }
+    }
+
+// array
+var a = [1, 2, 3, 4, 5 ];
+// afisez elementul de la poz 0
+console.log(a[0])
+console.log(a[4])
+
+//pun pe poz 10 din vecot valoarea 9
+//a[10]=9;
+//console.log(a[10]);
+//console.log(a);
+
+//afisez lungimea vectorului
+console.log(a.length)
+
+for (var i = 0; i < a.length; i++) {
+    console.log(i, a[i]); // afisez toate elem din vector de la poz 0 pama la ultima
+}
+
+console.log("--------------------")
+for (var j = a.length - 1; j >= 0; j--) {
+    console.log(j, a[j]);
+}
+
+console.log("--------------------")
+//adaug un element in vector - pe cea mai din dreapta pozitie
+a.push(6); // <=> a[a.length] = 6;
+console.log(a);
+console.table(a);
+
+console.log("--------------------")
+// scoatearea unui element din vector 
+var x = a.pop();
+console.log("x ", x);
+console.log(a);
+
+console.log("--------------------")
+// scto primul lelemnt din vector
+var firstElement = a.shift()
+console.log("x ", x);
+console.log(a);
+
+
+
+
+
+
+</script>
+</head>
+
+<body>
+The content of the document......
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Functii avansat HTML</title>
+<script>
+
+    //context global 
+    var a = 7;
+    function foo() {
+        var a = 5; // contextul functiei local 
+        console.log(a); // se va afisa din contextul local
+        // daca nu decalr var se va lua var din context global
+    }
+    foo()
+    
+    // exemplu de poluare a spatiului local
+    function foo2(){
+        B = 10;
+        console.log(B);
+    }
+    foo2();
+
+    function foo3(){
+        "use strict" // pun use strict la inceputul functiei pt nu a polua spatiul local
+        C= 10;
+        console.log(C);
+    }
+    foo3();
+
+    function foo4(a) {
+        // var a = a ;
+        // parametru va avea prioritate peste var din context global
+        console.log(a);
+    }
+    // pt apelul functiei se va lua var definita in contex global la inceputul prog
+    foo4(a)
+
+    // scope-chaining
+    var a = 5;
+    function foo4() {
+        var a = 6;
+          function foo5(){
+              var a = 7;
+              function foo6() {
+                  console.log(a);
+              }
+          }
+    }
+    
+    
+    </script>
+</head>
+
+
+<body>
+The content of the document......
+</body>
+
+</html>

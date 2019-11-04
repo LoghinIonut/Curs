@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+</head>
+<style>
+    .cerc {
+        display: inline-block;
+        background: red;
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        border-radius: 50%;
+        padding-left: 5px;
+        padding-top: 5px;
+        transform: translate(-50%,-50%)
+    }
+
+    .secundar {
+        display: inline-block;
+        background: black;
+        width: 100px;
+        height: 2px;
+        position: absolute;
+        transform-origin: 0 0;
+    }
+    .minutar {
+        display: inline-block;
+        background: black;
+        width: 100px;
+        height: 3px;
+        position: absolute;
+        transform-origin: 0 0;
+    }
+    .orar {
+        display: inline-block;
+        background: black;
+        width: 40px;
+        height: 4px;
+        position: absolute;
+        transform-origin: 0 0;
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", start);
+    var secundar;
+    var minutar;
+    var orar;
+
+    function start() {
+        var n = 12;
+        var pas = 360 / n;
+        pas = (pas * Math.PI) / 180;
+        console.log(pas);
+        var alpha = -Math.PI / 2 + (30 * Math.PI) / 180; //conversie radiani 
+        var div;
+        var cx = 300;
+        var cy = 300;
+        var x;
+        var y;
+        var r = 100;
+
+        secundar = document.createElement("div")
+        secundar.className = "secundar"
+        secundar.style.left = cx + "px";
+        secundar.style.top = cy + "px";
+        document.body.appendChild(secundar)
+        var date = new Date();
+
+        minutar = document.createElement("div")
+        minutar.className = "minutar"
+        minutar.style.left = cx + "px";
+        minutar.style.top = cy + "px";
+        document.body.appendChild(minutar);
+        var date = new Date();
+
+        orar = document.createElement("div")
+        orar.className = "orar"
+        orar.style.left = cx + "px";
+        orar.style.top = cy + "px";
+        document.body.appendChild(orar);
+        var date = new Date();
+
+        
+        console.log(hours, minutes, seconds)
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+
+        // transform
+        secundar.style.transform = "rotate(" + (seconds * 6 - 90) + "deg)";
+        for (var i = 1; i <= n; i++) {
+            div = document.createElement("div");
+            div.className = "cerc"
+            x = cx + Math.cos(alpha) * r;
+            y = cy + Math.sin(alpha) * r;
+            div.style.left = x + "px";
+            div.style.top = y + "px";
+            div.innerHTML = i;
+            document.body.appendChild(div)
+            alpha += pas;
+        }
+        setInterval(tick, 1000);
+
+        minutar.style.transform = "rotate(" + (minutes * 6 - 90) + "deg)";
+        for (var i = 1; i <= n; i++) {
+            div = document.createElement("div");
+            div.className = "cerc"
+            x = cx + Math.cos(alpha) * r;
+            y = cy + Math.sin(alpha) * r;
+            div.style.left = x + "px";
+            div.style.top = y + "px";
+            div.innerHTML = i;
+            document.body.appendChild(div)
+            alpha += pas;
+        }
+        setInterval(tick1, 1000);
+
+        orar.style.transform = "rotate(" + (hours * 6 - 90) + "deg)";
+        for (var i = 1; i <= n; i++) {
+            div = document.createElement("div");
+            div.className = "cerc"
+            x = cx + Math.cos(alpha) * r;
+            y = cy + Math.sin(alpha) * r;
+            div.style.left = x + "px";
+            div.style.top = y + "px";
+            div.innerHTML = i;
+            document.body.appendChild(div)
+            alpha += pas;
+        }
+        setInterval(tick2, 1000);
+    }
+
+    function tick() {
+        var date = new Date();
+        var seconds = date.getSeconds();
+        secundar.style.transform = "rotate(" + (seconds * 6 - 90) + "deg)";
+        console.log("tick")
+    }
+    function tick1() {
+        var date = new Date();
+        var minutes = date.getMinutes();
+        minutar.style.transform = "rotate(" + (minutes * 6 - 90) + "deg)";
+        console.log("tick1")
+    }
+    function tick2() {
+        var date = new Date();
+        var hours = date.getHours();
+        orar.style.transform = "rotate(" + (hours * 6 - 90) + "deg)";
+        console.log("tick2")
+    }
+
+
+
+</script>
+
+<body>
+  
+</body>
+
+</html>
