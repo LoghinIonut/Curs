@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+<script>
+   /* var x = 0 || 1 || 0 || 2  => x = 1*/ 
+   function indexOf ( a , elem , index = 0 ) { 
+   index = index || 0
+   if ( index == undefined) {
+       index = 0 }
+       for ( var i = index; i < a.length; i++) {
+           if (elem == a[i] ) {
+              return a[i]; 
+              }
+       }
+       return -1;
+   }
+
+
+
+
+</script>
+</head>
+
+<body>
+The content of the document......
+</body>
+
+</html>
