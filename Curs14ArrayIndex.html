@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Title of the document</title>
-<script>
-   /* var x = 0 || 1 || 0 || 2  => x = 1*/ 
-   function indexOf ( a , elem , index = 0 ) { 
-   index = index || 0
-   if ( index == undefined) {
-       index = 0 }
-       for ( var i = index; i < a.length; i++) {
-           if (elem == a[i] ) {
-              return a[i]; 
-              }
-       }
-       return -1;
-   }
+    <title>Title of the document</title>
+    <script>
+        function indexOf(a, element, fromIndex = 0/*aici am un parametru default*/) {
+            // asa se pot pune parametri default
+            //fromIndex = fromIndex || 0;
+            /*
+            if (fromIndex == undefined){
+                fromIndex = 0;
+            }
+            */
+            for (var i = index; i < a.length; i++) {
+                if (elem == a[i]) {
+                    return a[i];
+                }
+            }
+            return -1;
+        }
+
+        var beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+
+        console.log(indexOf(beasts, 'bison'));
+        //expand output: 1
 
 
 
 
-</script>
+    </script>
 </head>
 
 <body>
-The content of the document......
+    The content of the document......
 </body>
 
 </html>
