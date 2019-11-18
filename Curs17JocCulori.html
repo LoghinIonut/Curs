@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        
+        .container {
+            position: relative;
+            display: inline-block;
+            width: 440px;
+        }
+
+        .patrat {
+            position: absolute;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border: 3px solid black;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var colorHashMap = {
+            "green": "greenyellow",
+            "firebrick": "red",
+            "goldenrod": "gold",
+            "grey": "lightgrey",
+            "orangered": "orange",
+            "purple": "mediumvioletred",
+            "yellow": "yellowgreen",
+            "white": "thistle",
+            "skyblue": "slateblue",
+        };
+        var container;
+        var squareIds = [];
+        var sequence = []; // ordinea de aprindere a patratelor
+        var diff = 5; // dificultatea
+        var index = 0;
+        var newSequence = [];
+
+
+
+        function start() {
+            container = document.createElement("div");
+            container.className = "container";
+            document.body.appendChild(container);
+            container.style.pointerEvents = "none";
+            createSquares();
+            generateSequence();
+            light();
+        };
+
+        function generateSequence() {
+            for ( var i = 0; i < diff; i++) {
+                sequence.push(Math.floor(Math.random() * 9));
+            }
+        }
+
+        function createSquares() {
+            var colors = Object.keys(colorHashMap);
+            var patrat;
+            var id;
+            var nX = 0;
+            var nY = 0;
+            var index = 0;
+            for (var i = 0; i < 3; i++) {
+                for (var j = 0; j < 3; j++) {
+                    patrat = document.createElement("div");
+                    patrat.className = "patrat";
+                    patrat.style.left = nX + "px";//`${nX}px`
+                    patrat.style.top = nY + "px";
+
+                    id = `p-${i}-${j}` // = "p-" + i + "-" + j;
+                    squareIds.push(id);
+                    patrat.id = id;
+                    patrat.style.background = colors[index];
+                    index++;
+                    container.appendChild(patrat);
+                    nX += 110;
+                    patrat.addEventListener("mouseover", patratMouseOver);
+                    patrat.addEventListener("mouseout", patratMouseOut);
+                    patrat.addEventListener("mousedown", patratMouseDown);
+                    patrat.addEventListener("mouseup", patratMouseUp);
+                }
+                nY += 110;
+                nX = 0;
+            }
+            console.log(squareIds);
+        }
+
+        function patratMouseDown() {
+            this.style.borderColor = "red";
+            var clickedIndex = squareIds.indexOf(this.id);
+            newSequence.push(clickedIndex);
+            for (var i = 0 ; i < newSequence.length; i++){
+                if (newSequence[i] != sequence[i]) {
+                    window.alert("ai pierdut");
+                    document.location.reload();
+                    return;
+                }
+            }
+            if (i == sequence.length) {
+                window.alert("ai castigat");
+                document.location.reload();
+            }
+
+            //console.log(newSequence);
+            //console.log("i", i)
+        };
+
+        function patratMouseUp() {
+            this.style.borderColor = "black";
+        }
+
+          
+        function patratMouseOver() {
+            console.log(this.style.background)
+            console.log(colorHashMap[this.style.background])
+            //var prevColor = this.style.background;
+            this.style.background = colorHashMap[this.style.background];
+        };
+
+        function patratMouseOut() {
+            var value = this.style.background
+            this.style.background = getKeyForValue(value);
+        };
+
+        function getKeyForValue(value) {
+            for (var s in colorHashMap) {
+                if (value == colorHashMap[s]) {
+                   // this.style.background = s;
+                    //break ; //ma scoate din for 
+                    return s; // ma scoate din functie
+                }
+            }
+            // break-ul m-ar fi adus aici
+        }
+
+        function light() {
+            var currentIndex = sequence[index];
+            var id = squareIds[currentIndex];
+            var element = document.getElementById(id);
+            element.style.background = colorHashMap[element.style.background];
+            element.style.borderColor = "red"
+            setTimeout(dim, 1000);
+        }
+
+        function dim() {
+            console.log("dim");
+            var currentIndex = sequence[index];
+            var id = squareIds[currentIndex];
+            var element = document.getElementById(id);
+            var value = element.style.background;  
+            element.style.background = getKeyForValue(value);
+            element.style.borderColor = "black"
+            index++;
+            if  (index < sequence.length) {
+                setTimeout(light, 500);
+            } else { 
+                startGame();
+            }
+
+        }
+
+        function startGame() {
+            container.style.pointerEvents = "all";
+            console.log("sa incepem");
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

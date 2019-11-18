@@ -9,6 +9,7 @@
         var toReplace;
         var text;
         var button;
+        
         function start() {
             replace = document.getElementsByClassName("replace")[0];
             toReplace = document.getElementsByClassName("toReplace")[0];
@@ -18,6 +19,7 @@
 
             button.addEventListener("click", buttonClick);
         }
+
         function buttonClick() {
             var replaceValue = replace.value;
             var toReplaceValue = toReplace.value;
@@ -30,9 +32,6 @@
             var textValue = textValue.replace(new RegExp(replaceValue, "g"), toReplaceValue);
             //console.log(textValue.replace(replaceValue, toReplaceValue));
             text.value = textValue ;
-
-            
-            
 
         }
     </script>
