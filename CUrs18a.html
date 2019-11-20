@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        .patrat {
+            position: relative;
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            margin: 20px;
+            border: 5px solid black
+        }
+
+        .patratMic {
+            position: absolute;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            top: 25%;
+            left: 25%;
+            border: 5px solid black
+        }
+
+
+        .patratOver {
+            /*display: inline-block;
+         width: 50px;
+         height: 50px;
+         margin: 10px;
+         border: 1px solid black;*/
+            background: red
+        }
+
+        .patratOver1 {
+            /*display: inline-block;
+         width: 50px;
+         height: 50px;
+         margin: 10px;
+         border: 1px solid black;*/
+            background: orange
+        }
+
+        .patratOut {
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            margin: 20px;
+            border: 5px solid black
+        }
+    </style>
+
+    <script>
+        /// citeste articolul despre bubling javascriptinfo !!!
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            var parentDiv;
+            var childDiv;
+            //for (var i = 0; i < 2; i++) {
+            // for (var j = 0; j < 2; j++)
+            parentDiv = document.createElement("div");
+            childDiv = document.createElement("div")
+            parentDiv.className = "patrat";
+
+            document.body.appendChild(parentDiv);
+            parentDiv.appendChild(childDiv);
+            childDiv.className = "patratMic";
+
+            // mouse enter/leave nu e la fel cu over/out !!!
+            parentDiv.addEventListener("mouseenter", divMouseOver);
+            parentDiv.addEventListener("mouseleave", divMouseOut);
+            childDiv.addEventListener("mouseenter", divMouseOver1);
+            childDiv.addEventListener("mouseleave", divMouseOut1);
+            //}
+
+            parentDiv.addEventListener("click", divParentClick);
+            //childDiv.addEventListener("click", divChildClick)
+
+        }
+
+        function divParentClick(e) {
+            console.log("click ")
+            console.log("target ", e.target);
+            console.log("curentTarget ", e.currentTarget)
+
+        }
+
+       // function divChildClick(e) {
+        //    console.log("click ", this)
+       // }
+
+        function divMouseOver(e) {
+            console.log("mouse over", this);
+            //this.className = "patratOver";
+            this.classList.add("patratOver")
+        }
+        function divMouseOut(e) {
+            console.log("mouse out", this);
+            //this.className = "patrat";
+            this.classList.remove("patratOver")
+        }
+
+        function divMouseOver1(e) {
+            console.log("mouse over", this);
+            //this.className = "patratOver";
+            this.classList.add("patratOver1")
+        }
+        function divMouseOut1(e) {
+            console.log("mouse out", this);
+            //this.className = "patrat";
+            this.classList.remove("patratOver1")
+        }
+
+        // e.stopImmediatePropagation(); // omor evenimente
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
