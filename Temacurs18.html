@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        div {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            border: 5px solid black
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", start)
+
+        var dict = {
+        }
+
+
+        function start() {
+            var button;
+            for (i = 1; i <= 5; i++) {
+                dict["button" + i] = 0
+                console.log(dict);
+
+                button = document.createElement("button");
+                button.innerHTML = 0;
+                button.className = "button" + i;
+                document.body.appendChild(button);
+                button.addEventListener("click", click);
+            }
+        }
+
+        function click() {
+             dict[this.className]++ ;
+             console.log(this.className);
+            this.innerHTML = dict[this.className];
+        }
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
