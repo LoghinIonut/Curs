@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        body {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        /*daca nu scrii asta nu apare patratu */
+        div {
+            position: absolute;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background: red;
+            display: inline-block;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <script>
+        //functia nu porneste fara linia aceasta
+        document.addEventListener("DOMContentLoaded", start);
+
+        //denumeste tot timpul cea cu ce o sa lucrezi
+        var div;
+        var divs = [];
+        var canDrag = false;
+        var windowWidth;
+        var windowHeight;
+        var dx;
+        var dy;
+        var valMax = 300;
+        var valMin = 100;
+        var n = 20;
+        var selectedElement;
+        var r = 25;
+
+        function start() {
+            for (var i = 0; i < n; i++) {
+                //creez div
+
+                div = document.createElement("div");
+                divs.push(div);
+                div.style.top = Math.floor(Math.random() * (window.innerHeight - 50)) + "px"
+                div.style.left = Math.floor(Math.random() * (window.innerWidth - 50)) + "px"
+                document.body.appendChild(div);
+
+                //evenimentele mousului pentru drag
+                div.addEventListener("mousedown", MouseDown);
+
+            }
+            document.body.addEventListener("mouseup", MouseUp);
+            document.body.addEventListener("mousemove", MouseMove);
+            document.body.addEventListener("mouseleave", MouseLeave);
+
+        }
+
+        function MouseDown(event) {
+            canDrag = true;
+            selectedElement = this;
+            var bBox = this.getBoundingClientRect();// this. <- cod complicat citeste despre el
+            dx = event.clientX - bBox.left;
+            dy = event.clientY - bBox.top;
+        }
+
+        function MouseUp(event) {
+            canDrag = false;
+            selectedElement = null;
+
+        }
+
+        function MouseMove(event) {
+            var rect;
+            var distance;
+            var x;
+            var y;
+
+            // acest if misca patratelu 
+            if (canDrag == true) {
+                x = event.clientX - dx; // event.client <- citeste despre 
+                y = event.clientY - dy;
+                selectedElement.style.top = y + "px";
+                selectedElement.style.left = x + "px";
+                //selectedElement.style.left = `${x}px`;
+            }
+            // if (x < 0, y < 0) {
+            //     x = 0;
+            //     y = 0;
+            // }
+            // if (x + 50 >= windowWidth, y + 50 >= windowHeight) {
+            //     x = windowWidth - 50;
+            //     y = windowHeight - 50;
+            // }
+            // var a = Math.round(x * 100 / (windowWidth - 50));
+            // var b = Math.round(y * 100 / (windowHeight - 50));
+            // var val1 = Math.round(a * valMax / 100);
+            // var val2 = Math.round(b * valMin / 100);
+
+            for (var i = 0; i < divs.length; i++) {
+                rect = divs[i].getBoundingClientRect();
+                distance = Math.sqrt((event.clientX - (rect.x + rect.width / 2)) ** 2 + (event.clientY - (rect.y + rect.height / 2)) ** 2)
+                if (distance < r) {
+                    divs[i].style.background = "yellow"
+                } else {
+                    divs[i].style.background = ""
+
+                }
+            }
+
+        }
+
+        function MouseLeave() {
+            canDrag = false;
+            selectedElement = null;
+
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
