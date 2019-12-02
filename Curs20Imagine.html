@@ -3,16 +3,16 @@
 <head>
 <title>Title of the document</title>
 <script>
-window.addEventListener("load", start);
-var canvas;
-var ctx;
+
+document.addEventListener("DOMContentLoaded", start);
+var image;
+
 function start(){
-    canvas = document.getElementsByTagName("canvas")[0];
-    ctx = canvas.getContext("2d");
-    var img = new Image() //document.getElementsByTagName("img")[0];
-    console.log(img);
-    ctx.drawImage(img, 0 , 0);
-    console.log(ctx.getImageData(0, 0, 182, 277));
+    var image = new Image(182, 277) ;
+    image.src = "imagine.jpg";
+    document.body.appendChild(image);
+    console.log(image);
+   
 }
 </script>
 </head>
@@ -20,10 +20,5 @@ function start(){
 <body>
 
 </body>
-<canvas width="182" height="277" style="border: 1px solid black">
-
-</canvas>
-<img src="imagine.jpg">
-
 </html>
 

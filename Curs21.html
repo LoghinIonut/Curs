@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", start);
+        var canvas;
+        var ctx;
+        var image = new Image(182, 277);
+       
+        function start() {
+            image.src = "imagine.jpg";
+            image.addEventListener("load", start2);
+
+            canvas = document.getElementsByTagName("canvas")[0];
+            ctx = canvas.getContext("2d");
+            document.body.appendChild(image);
+            console.log(image);
+
+            //var Data = ctx.getImageData(0, 0 , 182, 277);
+            //console.log(Data)
+        }
+
+        function start2() {
+            ctx.drawImage(image, 0, 0, 182, 277);
+            console.log(image);
+
+            var data = ctx.getImageData(0, 0 , 182, 277);
+            console.log(data);
+
+            var val;
+            
+            for (var i = 0; i < 182 * 277 * 4; i+= 4) {
+                //val = data.data[i] * 0.3 + data.data[i + 1] * 0.59 + data.data[i + 2] * 0.11 ;
+                val = data.data[i] * 0.33 + data.data[i + 1] * 0.33 + data.data[i + 2] * 0.34 ;
+                data.data[i] = val;
+                data.data[i + 1] = val;
+                data.data[i + 2] = val;
+            }
+
+            ctx.putImageData(data, 0, 0)
+
+        }
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <canvas width="182" height="277"></canvas>
+
+</body>
+
+</html>

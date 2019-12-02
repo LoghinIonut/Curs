@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        body{
+            display: inline-block;
+            position: relative;
+        }
+        div {
+            position: absolute;
+            top: 250px;
+            width: 50px;
+            height: 50px;
+            background: burlywood;
+            margin-left: 0;
+            transition: margin-left 1s;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        var rect;
+        var rectX = 10;
+        var direction = 1;
+
+        var canvas;
+        var ctx;
+
+        var div;
+
+        function start() {
+            var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); // trebuie folosit namespace pt a crea elemente
+            svg.setAttribute("width", 500);
+            svg.setAttribute("height", 100);
+            document.body.appendChild(svg);
+
+            rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            rect.setAttribute("x", 10);
+            rect.setAttribute("y", 10);
+            rect.setAttribute("width", 50);
+            rect.setAttribute("height", 50);
+            rect.setAttribute("fill", "brown");
+            svg.appendChild(rect);
+
+            
+
+            canvas = document.getElementsByTagName("canvas")[0];
+            canvas.style.display = "block"
+            ctx = canvas.getContext("2d");
+            ctx.fillStyle = "green";
+            ctx.fillRect(rectX, 10, 50, 50)
+            document.body.appendChild(canvas);
+
+            div = document.createElement("div");
+            document.body.appendChild(div);
+           
+
+            requestAnimationFrame(animate);
+
+        
+        }
+
+        function animate() {
+            // animatie svg
+            rectX += 10 * direction;
+            if (rectX > 400 || rectX < 0) {
+                direction *= -1;
+            }
+
+            rect.setAttribute("x", rectX);
+            
+
+            //animatie canvas
+            // if (direction == 1) {
+            // ctx.clearRect(rectX - 10, 10, 500, 100);
+            // } else {
+            //     ctx.clearRect(rectX + 10, 10, 500, 100);
+            // }
+
+            ctx.fillStyle = "#ffffff1f"
+            ctx.fillRect(0, 0, 500, 150);
+            ctx.fillStyle = "green"
+            ctx.fillRect(rectX, 10, 50, 50);
+
+
+            
+            //if (div.style.left == "0" ) {
+                div.style.left = rectX + "px"
+            //} else {
+              //  div.style.left = "0"
+            //}
+
+
+            requestAnimationFrame(animate);
+        }
+
+        
+        
+        
+
+      
+        
+
+        
+    </script>
+</head>
+
+<body>
+    <canvas width="500"></canvas>
+
+</body>
+
+</html>
