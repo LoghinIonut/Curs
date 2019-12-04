@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        body {}
+
+        .div {
+            position: relative;
+            display: inline-block;
+            height: 50px;
+            width: 50px;
+            background: white;
+            border: 1px solid black;
+        }
+
+        .div1 {
+            position: absolute;
+            display: inline-block;
+            height: 50px;
+            width: 50px;
+            background: brown;
+            border: 1px solid black;
+
+        }
+
+        .div2 {
+            position: absolute;
+            display: inline-block;
+            height: 50px;
+            width: 50px;
+            background: rgb(82, 172, 82);
+            border: 1px solid black;
+            opacity: 0;
+            transition: opacity .2s;
+
+            -webkit-box-shadow: 6px 16px 28px 9px rgba(89, 163, 101, 0.81);
+            -moz-box-shadow: 6px 16px 28px 9px rgba(89, 163, 101, 0.81);
+            box-shadow: 6px 16px 28px 9px rgba(89, 163, 101, 0.81);
+
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var div;
+        var vectDiv = [];
+        var nrPatrate = 10;
+        var interval = setInterval(lightColor, 300)
+        var j = 0;
+        var noTraversal = 0;
+        var direction = 1;
+
+
+        function start() {
+
+            for (var i = 0; i < nrPatrate; i++) {
+                div = document.createElement("div");
+                div.className = "div"
+                div1 = document.createElement("div");
+                div1.className = "div1"
+                div2 = document.createElement("div");
+                div2.className = "div2"
+                document.body.appendChild(div);
+                div.appendChild(div1);
+                div.appendChild(div2);
+                vectDiv.push(div2);
+
+            }
+        }
+
+        for (var i = 0; i < nrPatrate; i++) {
+            console.log(i);
+        }
+
+
+        function lightColor() {
+            if (noTraversal % 2 == 0) {
+                //vectDiv[j].className = "green";
+                vectDiv[j].style.opacity = 1;
+            } else {
+                //vectDiv[j].className = " ";
+                vectDiv[j].style.opacity = 0;
+            }
+            //j++;
+
+            // if (j >= nrPatrate) {
+            //     // clearInterval(interval);
+            //     j = 0;
+            //     noTraversal++;
+            // }
+            console.log(j);
+            
+            
+            j += 1 * direction ;
+            if (j < 0 || j >= nrPatrate) {
+                direction *= -1 ;
+                j += 1 * direction ;
+                noTraversal++;
+            }
+
+
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
