@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+
+    <style>
+        .list {
+            display: inline-block;
+            width: 100px;
+            border: 1px solid black;
+            margin-right: 10px;
+            vertical-align: top;
+        }
+
+        .list-item {
+            border: 1px solid black;
+        }
+
+        .rightArrow {
+            display: inline-block;
+            padding: 5px;
+            background: green;
+            float: right;
+        }
+
+        .leftArrow {
+            display: inline-block;
+            padding: 5px;
+            background: red;
+        }
+    </style>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+        //document.addEventListener("DOMContentLoaded", start);
+        var lists = {};
+        var noLists = 7;
+        var noElementsInList = 10
+        $(function start() {
+            var list;
+            var listItem;
+            var leftArrow;
+            var rightArrow;
+            for (var i = 0; i < noLists; i++) {
+                //list = document.createElement("div");
+                list = $("<div></div>");
+                //list.id = "list" + i;
+                list.attr("id", "list" + i);
+                //list.className = "list";
+                list.addClass("list");
+                //document.body.appendChild(list);
+                list.appendTo("body");
+                for (var j = 0; j < noElementsInList; j++) {
+                    //listItem = document.createElement("div");
+                    listItem = $("<div></div>");
+                    //leftArrow = document.createElement("div");
+                    leftArrow = $("<div></div>");
+                    //rightArrow = document.createElement("div");
+                    rightArrow = $("<div></div>");
+                    //leftArrow.innerHTML = "<";
+                    $(leftArrow).text("<");
+                    //rightArrow.innerHTML = ">";
+                    $(rightArrow).text(">");
+                    //listItem.className = "list-item";
+                    listItem.addClass("list-item");
+                    //leftArrow.className = "leftArrow";
+                    leftArrow.addClass("leftArrow");
+                    //rightArrow.className = "rightArrow";
+                    rightArrow.addClass("rightArrow");
+                    //listItem.innerHTML = i + " " + j;
+                    $(listItem).text(i + " " + j);
+                    //listItem.appendChild(leftArrow);
+                    listItem.append(leftArrow);
+                    //listItem.appendChild(rightArrow);
+                    listItem.append(rightArrow);
+                    //list.appendChild(listItem);
+                    list.append(listItem);
+                    //listItem.addEventListener("click", listItemClick);
+                    listItem.on("click", listItemClick);
+
+                }
+            }
+        });
+        function listItemClick(event) {
+            //var parentId = this.parentElement.id;
+            var parentId = $(this).parent().attr("id");
+            var index = parseInt(parentId.slice(4));
+            //console.log(event.target);
+
+            // if (event.target.className == "leftArrow") {
+            //     if (index == 0) {
+            //         index = noLists;
+            //     }
+
+            //     this.remove();
+            //     var leftList = document.getElementById("list" + (index - 1));
+            //     leftList.appendChild(this);
+            //}
+            if ($(event.target).hasClass("leftArrow")) {
+                if (index == 0) {
+                    index = noLists;
+                }
+                this.remove();
+                var leftList = $("#list" + (index - 1));
+                leftList.append(this);
+            } else if ($(event.target).hasClass("rightArrow")) {
+                if (index == noLists - 1) {
+                    index = -1;
+                 }
+                  this.remove();
+                  var leftList = $("#list" + (index + 1));
+                  leftList.append(this);
+            }
+
+            // else if (event.target.className == "rightArrow") {
+            //     if (index == noLists - 1) {
+            //         index = -1;
+            //     }
+            //     this.remove();
+            //     var leftList = document.getElementById("list" + (index + 1));
+            //     leftList.appendChild(this);
+            // }
+            
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

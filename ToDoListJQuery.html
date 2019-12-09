@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Document</title>
+    <style>
+        .item {
+            width: 200px;
+            border: 1px solid black;
+            display: block;
+            text-align: right;
+        }
+
+        .minus {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 25px;
+        }
+
+        .plus {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: red;
+            text-align: center;
+            line-height: 25px;
+        }
+    </style>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+        var items = [];
+        //document.addEventListener("DOMContentLoaded", start);
+
+        $(function start() {
+            var div = createElement();
+            //var div = $("<div></div>");
+            items.push(div[0]);
+            //$(items).add(div);
+            //div.addEventListener("click", divClick);
+            div.on("click", divClick);
+            //document.body.appendChild(div);
+            div.appendTo("body");
+        });
+        
+
+        function divClick(e) {
+            // if (e.target.className == "item") {
+            //     return;
+            // } else if (e.target.className == "minus") {
+            //     console.log("click minus");
+
+            //     if (items.length < 2) {
+            //         return;
+            //     }
+            //     //if (items.length > 1) {
+            //     var currentIndex = items.indexOf(e.currentTarget);
+            //     items.splice(currentIndex, 1);
+            //     e.currentTarget.remove();
+            //     //}
+            // }
+            console.log(items);
+            console.log(e.currentTarget);
+            if ($(e.target).hasClass("item")) {
+                return;
+            } else if ($(e.target).hasClass("minus")) {
+                console.log("click minus");
+
+                if (items.length < 2) {
+                    return;
+                }
+                if (items.length > 1) {
+                    var currentIndex = items.indexOf(e.curent.target);
+                    items.splice(currentIndex, 1);
+                    $(e.curent.target).remove();
+                }
+                //  else {
+                //     //console.log("click plus");
+                //     var div = createElement();
+                //     // e.currentTarget este elementul pe care am adaugat listenerul
+                //     var currentIndex = items.indexOf(e.currentTarget);
+                //     items.splice(currentIndex, 0, div);
+                //     div.addEventListener("click", divClick);
+                //     e.currentTarget.insertAdjacentElement("afterend", div);
+                // }
+                
+                else {
+                    
+                    console.log("click plus");
+                    var div = createElement();
+                    var currentIndex = items.indexOf(e.curent.target);
+                    items.splice(currentIndex, 0, div);
+                    div.on("click", divClick);
+                    $(e.curent.target).insertAfter("afterend", div)
+                }
+                console.log(items);
+            }
+        }
+        function createElement() {
+            //var div = document.createElement("div");
+            var div = $("<div></div>");
+            //div.className = "item";
+            div.addClass("item");
+            //var divMinus = document.createElement("div");
+            var divMinus = $("<div></div>");
+            //divMinus.className = "minus";
+            divMinus.addClass("minus");
+            //divMinus.innerHTML = "-";
+            $(divMinus).text("-");
+            //var divPlus = document.createElement("div");
+            var divPlus = $("<div></div>");
+            //divPlus.className = "plus";
+            divPlus.addClass("plus");
+            //divPlus.innerHTML = "+";
+            $(divPlus).text("+");
+            //div.appendChild(divMinus);
+            div.append(divMinus);
+            //div.appendChild(document.createElement("br"));
+            div.append($("br"));
+            //div.appendChild(divPlus);
+            div.append(divPlus);
+            return div;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

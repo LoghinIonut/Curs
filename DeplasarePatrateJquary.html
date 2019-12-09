@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<title>HTML Tutorial</title>
+<style>
+    .patrat {
+        width: 50px;
+        height: 50px;
+        background: red;
+        margin-left: 0;
+        cursor: pointer;
+        transition: margin-left 1s;
+        /*marchez proprietatea ca fiind animabila*/
+        /*
+        asa s-ar pune transition din js
+        this.style.transition = "margin-left 1s"
+        */
+    }
+</style>
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+    // ma asigur ca e DOM-ul incarcat inainte sa fac operatii pe DOM
+    //document.addEventListener("DOMContentLoaded", start);
+
+    $(function start() {
+        // creez 5 divuri si le pun in body
+        var div;
+        for (var i = 0; i < 5; i++) {
+            //div = document.createElement("div");
+            div = $("<div></div>");
+            //document.body.appendChild(div);
+            div.appendTo("body");
+            //div.className = "patrat";
+            div.addClass("patrat");
+            //div.attr("id", "div" + i);
+
+            // adaug actiunea de click pe divuri
+
+            //div.addEventListener("click", divClick);
+            div.on("click", divClick);
+
+        }
+
+    });
+    function divClick() {
+        // asa pot verifica de ce tip este o proprietate
+        //console.log(typeof this.style.marginLeft); 
+        // if (this.style.marginLeft == "500px") { // deca e in dreapta
+        //     this.style.marginLeft = "0"; // il duc in stanga
+        // } else { // altfel
+        //     this.style.marginLeft = "500px"; // il duc in dreapta
+        // }
+        switch ($(this).css("marginLeft")) {
+            case "500px":
+            $(this).css("marginLeft", "0px") 
+                break;
+            default:
+            $(this).css("marginLeft", "500px") 
+                break;
+        }
+        
+    }
+</script>
+
+<body>
+
+</body>
+
+</html>
