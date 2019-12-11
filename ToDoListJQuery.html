@@ -63,18 +63,18 @@
             // }
             console.log(items);
             console.log(e.currentTarget);
-            if ($(e.target).hasClass("item")) {
+            if ($(e.currentTarget).hasClass("item")) {
                 return;
-            } else if ($(e.target).hasClass("minus")) {
+            } else if ($(e.currentTarget).hasClass("minus")) {
                 console.log("click minus");
 
                 if (items.length < 2) {
                     return;
                 }
                 if (items.length > 1) {
-                    var currentIndex = items.indexOf(e.curent.target);
+                    var currentIndex = items.indexOf(e.curentTarget);
                     items.splice(currentIndex, 1);
-                    $(e.curent.target).remove();
+                    $(e.curentTarget).remove();
                 }
                 //  else {
                 //     //console.log("click plus");
@@ -90,10 +90,10 @@
                     
                     console.log("click plus");
                     var div = createElement();
-                    var currentIndex = items.indexOf(e.curent.target);
+                    var currentIndex = items.indexOf(e.curentTarget);
                     items.splice(currentIndex, 0, div);
                     div.on("click", divClick);
-                    $(e.curent.target).insertAfter("afterend", div)
+                    $(e.curentTarget).insertAfter("afterend", div);
                 }
                 console.log(items);
             }
