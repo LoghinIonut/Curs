@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        label {
+            display: inline-block;
+            width: 150px;
+        }
+
+        div {
+            margin-bottom: 5px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var salariuCurentInput;
+        var procentInput;
+        var salariuPeste5AniInput;
+        var salariuPeste10AniInput;
+        var salariuPeste15AniInput;
+
+        var procentBtn;
+        var salar5Btn;
+        var salar5Btn;
+        var salar15Btn;
+
+        var procentMessageSpan;
+
+        function start() {
+            console.log(salariuDinAnulPrecedent(1100, 10));
+            salariuCurentInput = document.getElementById("salarCurent");
+            procentInput = document.getElementById("procent");
+            salariuPeste5AniInput = document.getElementById("salariu5");
+            salariuPeste10AniInput = document.getElementById("salariu10");
+            salariuPeste15AniInput = document.getElementById("salariu15");
+
+            procentBtn = document.getElementById("btn_procent");
+            salar5Btn = document.getElementById("btn_salariu5");
+            salar10Btn = document.getElementById("btn_salariu10");
+            salar15Btn = document.getElementById("btn_salariu15");
+
+            procentMessageSpan = document.getElementById("procentMessage");
+
+            procentBtn.addEventListener("click", procentBtnClick);
+            salar5Btn.addEventListener("click", salar5BtnClick);
+            salar10Btn.addEventListener("click", salar10BtnClick);
+            salar15Btn.addEventListener("click", salar15BtnnClick);
+
+            salariuCurentInput.value = 1000;
+
+            procentInput.addEventListener("input", procentInputChange);
+            procentInput.addEventListener("paste", procentInputPaste);
+        }
+
+        //https://regex101.com/ - expresii regulate.
+
+        function procentInputChange(e) {
+            if (isNaN(parseInt(e.data)) && e.data != "." && e.data != "-") {
+                console.log("is nan");
+                procentInput.value = procentInput.value.slice(0, procentInput.value.length - 1)
+            }
+            //console.log(e);
+        }
+
+        function procentInputPaste(e) {
+            var procent = parseFloat(e.clipboardData.getData("text"));
+            if (isNaN(procent)) {
+                procent = 0;
+            }
+            procentInput.value = procent;
+            e.preventDefault();
+
+        }
+
+        function procentBtnClick(e) {
+             e.preventDefault(); // omoara comportamentul default browser)
+            
+            var salariuCurent = parseFloat(salariuCurentInput.value);
+            var procent = parseFloat(procentInput.value);// numar cu virgula
+            if (isNaN(procent)) {
+                procent = 0;
+                procentInput.value = procent;
+            }
+
+            if (procent < 0) {
+                procentMessageSpan.innerHTML = "procentul nu popate fi mai mic ca 0"
+                return;
+            }
+
+            for (var i = 1; i <= 15; i++) {
+                valDeAdaugat = Math.round(procent / 100 * salariuCurent);
+                salariuCurent += valDeAdaugat;
+                switch (i) {
+                    case 5:
+                        salariuPeste5AniInput.value = salariuCurent;
+                        break;
+                    case 10:
+                        salariuPeste10AniInput.value = salariuCurent;
+                        break;
+                    case 15:
+                        salariuPeste15AniInput.value = salariuCurent;
+                        break;
+                }
+            }
+
+            console.log(salariuCurent, typeof salariuCurent);
+            console.log(procent, typeof procent);
+
+        }
+
+        function salariuDinAnulPrecedent(salariuCurent, procentMarire) {
+                  return Math.round(salariuCurent / (1 + procentMarire / 100));
+        }
+
+        function salar5BtnClick(e) {
+            var salariuPeste5Ani = parseFloat(salariuPeste5AniInput.value);
+            var procent = parseFloat(procentInput.value);
+            salariuCurent = salariuPeste5Ani;
+            for (var i = 0; i < 5; i++) {
+                salariuCurent =salariuDinAnulPrecedent(salariuCurent, procent);
+            }
+            salariuCurentInput.value = salariuCurent;
+            e.preventDefault()
+        }
+
+        function salar10BtnClick() {
+
+        }
+
+        function salar15BtnnClick() {
+
+        }
+
+        /* butonul in formular face refresh */
+    </script>
+</head>
+
+<body>
+    <form>
+
+        <div>
+            <label for="salarCurent">Salariu curent</label>
+            <input id="salarCurent" type="text">
+        </div>
+
+        <div>
+            <label for="procent">procent crestere anuala</label>
+            <input id="procent" type="text">
+            %
+            <button type="button" id="btn_procent">Go</button>
+            <span id="procentMessage"></span>
+        </div>
+
+        <div>
+            <label for="salariu5t">Salariu peste 5 ani</label>
+            <input id="salariu5" type="text">
+            <button type="button" id="btn_salariu5">Go</button>
+        </div>
+
+        <div>
+            <label for="salariu10">Salariu peste 10 ani</label>
+            <input id="salariu10" type="text">
+            <button type="button" id="btn_salariu10">Go</button>
+        </div>
+
+        <div>
+            <label for="salariu15">Salariu peste 15 ani</label>
+            <input id="salariu15" type="text">
+            <button type="button" id="btn_salariu15">Go</button>
+        </div>
+
+
+
+
+
+
+
+    </form>
+</body>
+
+</html>

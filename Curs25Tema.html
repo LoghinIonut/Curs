@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        .container {
+            display: inline-block;
+            position: relative;
+            width: 500px;
+            height: 100px;
+            border: 1px solid black;
+
+
+        }
+
+        .patrat {
+            display: inline-block;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: aquamarine;
+
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var container;
+        var patrat;
+        var dX = 0;
+        var dY = 0;
+
+        function start() {
+            container = document.createElement("div");
+            container.className = "container";
+            patrat = document.createElement("div");
+            patrat.className = "patrat"
+            container.appendChild(patrat);
+            document.body.appendChild(container);
+            document.body.addEventListener("keydown", moveSquare);
+
+        }
+
+        function moveSquare(e) {
+            var arrow = e.code
+            switch (arrow) {
+                case "ArrowLeft":
+                    moveLeft();
+                    break;
+                case "ArrowRight":
+                    moveRight();
+                    break;
+                case "ArrowUp":
+                    moveUp();
+                    break;
+                case "ArrowDown":
+                    moveDown();
+                    break;
+            }
+        }
+
+        function moveLeft() {
+            dX -= 5;
+            if (dX < 0) {
+                dX = 0;
+            }
+            patrat.style.left = dX + "px";
+        }
+        function moveUp() {
+            dY -= 5;
+            if (dY < 0) {
+                dY = 0;
+            }
+            patrat.style.top = dY + "px";
+        }
+        function moveRight() {
+            dX += 5;
+            if (dX > 490) {
+                dX = 490;
+            }
+            patrat.style.left = dX + "px";
+        }
+        function moveDown() {
+            dY += 5;
+            if (dY > 90) {
+                dY = 90;
+            }
+            patrat.style.top = dY + "px";
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
