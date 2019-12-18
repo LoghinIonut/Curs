@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        .gallery {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+
+        }
+
+        .imagesContainerDiv {
+            left: 0;
+            position: absolute;
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            /* retine */
+            transition: left 0.5s;
+
+        }
+
+        .bulletsDiv {
+            position: absolute;
+            display: inline-block;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+
+
+
+        }
+
+        .bullet {
+            display: inline-block;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: black;
+
+
+        }
+
+        .leftRightButtons {
+            position: absolute;
+            display: inline-block;
+            top: 50%;
+
+
+
+        }
+
+        .leftButtonDiv {
+            display: inline-block;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: black;
+            top: calc(50% - 50px);
+
+
+
+        }
+
+        .rightButtonDiv {
+            display: inline-block;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: black;
+            top: calc(50% - 50px);
+            left: calc(100% - 50px);
+
+
+
+        }
+
+        .imageContainer {
+            position: relative;
+            display: inline-block;
+
+
+        }
+
+        .image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* retine !!! */
+        }
+    </style>
+    <script>
+        // hoisting - citeste !! - interviu.
+        // document fragment - cauta !!
+
+        var imageLinks = [
+            "images/1.jpg",
+            "images/2.jpg",
+            "images/3.jpg",
+            "images/4.jpg",
+            "images/5.jpeg",
+            "images/6.jpg",
+            "images/7.jpg",
+            "images/8.jpg",
+        ];
+        var galleryDiv;
+        var imagesContainerDiv;
+        var leftRightButtonDiv;
+        var bulletsDiv;
+        var currentIndex = 0;
+        var galleryWidth = 800;
+        var galleryHeight = 500;
+        var leftButtonDiv;
+        var rightButtonDiv;
+        var bullet;
+        var slideShowInterval;
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            createGalleryStructure();
+            loadImages();
+            slideShowInterval = setInterval(nextImage, 800);
+        }
+
+        function resetTimer() {
+            clearInterval(slideShowInterval);
+            slideShowInterval = setInterval(nextImage, 800);
+        }
+
+        function nextImage() {
+            currentIndex++;
+                if (currentIndex > imageLinks.length - 1) {
+                    currentIndex = 0;
+                }
+            imagesContainerDiv.style.left = `${galleryWidth * currentIndex * (-1)}px`;
+
+        }
+
+        function createGalleryStructure() {
+            galleryDiv = document.createElement("div");
+            galleryDiv.className = "gallery";
+            galleryDiv.style.width = `${galleryWidth}px`;
+            galleryDiv.style.height = `${galleryHeight}px`;
+            imagesContainerDiv = document.createElement("div");
+            imagesContainerDiv.className = "imagesContainerDiv";
+            bulletsDiv = document.createElement("div");
+            bulletsDiv.className = "bulletsDiv";
+            for (var i = 1; i < imageLinks.length; i++) {
+                bullet = document.createElement("div");
+                bullet.className = "bullet";
+                bullet.setAttribute("data-index", i);
+                bulletsDiv.appendChild(bullet);
+            }
+            bulletsDiv.addEventListener("click", bulletClick)
+
+            leftRightButtonDiv = document.createElement("div");
+            leftRightButtonDiv.className = "leftRightButtonDiv";
+            leftButtonDiv = document.createElement("div");
+            leftButtonDiv.className = "leftButtonDiv";
+            rightButtonDiv = document.createElement("div");
+            rightButtonDiv.className = "rightButtonDiv";
+            leftRightButtonDiv.addEventListener("click", moveImageButton);
+            leftRightButtonDiv.style.width = `${galleryWidth}px`;
+
+
+            document.body.appendChild(galleryDiv);
+            galleryDiv.appendChild(imagesContainerDiv);
+            galleryDiv.appendChild(bulletsDiv);
+            galleryDiv.appendChild(leftRightButtonDiv);
+            leftRightButtonDiv.appendChild(leftButtonDiv);
+            leftRightButtonDiv.appendChild(rightButtonDiv);
+
+        }
+
+        function bulletClick(e) {
+            if (e.target.className == "bullet") {
+                currentIndex = parseInt(e.target.dataset.index);
+                imagesContainerDiv.style.left = `${galleryWidth * currentIndex * (-1)}px`;
+                //console.log(typeof e.target.dataset.index, e.target.dataset.index);
+                resetTimer();
+            }
+        }
+
+        function moveImageButton(e) {
+            if (e.target.className == "leftButtonDiv") {
+                currentIndex--;
+                if (currentIndex < 0) {
+                    currentIndex = imageLinks.length - 1;
+                }
+                resetTimer();
+
+            } else if (e.target.className == "rightButtonDiv") {
+                currentIndex++;
+                if (currentIndex > imageLinks.length - 1) {
+                    currentIndex = 0;
+                }
+                resetTimer();
+            }
+            imagesContainerDiv.style.left = `${galleryWidth * currentIndex * (-1)}px`;
+
+
+        }
+
+        function loadImages() {
+            var images;
+            var imageContainer;
+            for (var i = 0; i < imageLinks.length; i++) {
+                imageContainer = document.createElement("div");
+                imageContainer.className = "imageContainer"
+                imageContainer.style.width = `${galleryWidth}px`;
+                imageContainer.style.height = `${galleryHeight}px`;
+                imageContainer.style.background = "#" + Math.floor(Math.random() * 0xffffff).toString(16);
+                image = new Image();
+                image.style.maxWidth = `${galleryWidth}px`;
+                image.style.maxHeight = `${galleryHeight}px`;
+                image.src = imageLinks[i];
+                image.className = "image";
+                imageContainer.appendChild(image);
+                imagesContainerDiv.appendChild(imageContainer);
+            }
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
