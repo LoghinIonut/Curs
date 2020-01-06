@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script>
+        // 3 tipuri de variabile : var ; let ; const;
+        //  cauta : hoisting!!!! -se aplica doar pentru var ;
+
+        document.addEventListener("DOMContentLoaded", f);
+
+        let test = "test"
+        var test2 = "test2"
+
+        var b = 5;
+        var c = 2;
+        var a =(4, 5, b++, c--);
+        console.log("a=", a);
+        console.log("c=", c);
+
+        (function f() {
+            console.log("x")
+        })();
+
+        function f() {
+            console.log(".........inainte de if...........");
+            console.log(b);
+            //console.log(c);
+            if (5 > 3) {
+                var b = 6;
+                let c = 5;
+                console.log(".........in if...........");
+                console.log(b);
+                console.log(c);
+            }
+            console.log(".........dupa if...........");
+            console.log(b);
+            console.log(c);
+        }
+
+        // pentru interviu hoisting : var si let - spatiu - 
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

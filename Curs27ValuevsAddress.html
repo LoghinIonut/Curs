@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        // tipuri de data(cauta!!) : number ; string ; boolean; nul ; undefined ; object; symbol; bigint;
+        // number string boolean -> valoare; object -> referinta ;
+        //javascriptinfo <!!!
+
+        //variabile date prin valoare
+        var a = 5;
+        var b = a;
+        b++;
+        console.log(" a = ", a, "b= ", b)
+
+        // constant - nu poti schimba valoarea . e la fel cu "let".
+        const r = 90 
+        // r = 100 -> eroare!
+        const arr = [ 1, 2, 3];
+        // arr = []; -> eroare !
+        arr.push(5) // merge .
+        console.log(arr);
+
+        //variabile date prin referinta
+        var c = [5, 7];
+        var d = c;
+        d.push(6);
+        console.log(c);
+        console.log(d);
+
+        //
+        console.log("..................")
+        function copyArray(a) {
+            var newArray = [];
+            for (var i = 0; i < e.length; i++) {
+                if (a[i] instanceof Array) {
+                newArray[i] = copyArray(a[i]);
+                } else {
+                    newArray[i] = a[i];
+                }
+            }
+            return newArray;
+
+        }
+
+        console.log("..................")
+        var e = [[1, 2], [3, 4]];
+        var f = [];
+        for (var i = 0; i < e.length; i++) {
+            if (e[i] instanceof Array) {
+                f[i] = copyArray(e[i]);
+            }
+        }
+        f.push(5);
+        f[0].push(5);
+        console.log(e);
+        console.log(f);
+
+        console.log("..................")
+        var g = [[1, 2], [3, 4]];
+        var h = [];
+        for (var i = 0; i < g.length; i++) {
+            h[i] = g[i]
+        }
+        f.push(5);
+        f[0].push(5);
+        console.log(g);
+        console.log(h);
+
+        // nul - object
+        // undefined e "undefined" -_- 
+
+        //object - javascript.info
+
+        // consola - FlashPoint - FPS 
+        // performance -inregistrare -
+        // garbage colector javascript 
+        // google dev tools 
+        // html5 rocks browser how it works 
+        // CSS triggers 
+        // How browser wok : Behind the scenes - cauta ! 
+        // Polyfills 
+
+
+    </script>
+</head>
+
+
+<body>
+    The content of the document......
+</body>
+
+</html>
