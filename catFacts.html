@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+
+
+    </style>
+    <script>
+        var data;
+        var container;
+        document.addEventListener("DOMContentLoaded", start);
+        function start() {
+            container = document.createElement("div");
+            document.body.appendChild(container);
+            loadImage();
+        }
+        function reqListener(event) {
+            data = JSON.parse(this.response);
+            console.log(data);
+            container.innerHTML = "";
+
+            var extension = data.url.substring(data.url.lastIndexOf(".") + 1); // extensie fisier
+            if (extension.toLowerCase() == "mp4") {
+                var video = document.createElement("video");
+                //video.setAttribute("width", 320);
+                //video.setAttribute("height", 320);
+                video.setAttribute("controls", true);
+                var source = document.createElement("source");
+                video.appendChild(source);
+                source.setAttribute("src", data.url);
+                source.setAttribute("type", "video/mp4");
+                document.body.appendChild(video);
+                //alert("nu suportam video");
+
+            } else {
+                var img = new Image();
+                img.src = data.url;
+                document.body.appendChild(img);
+            }
+
+
+        }
+
+        setInterval(loadImage, 5000)
+
+
+        function loadImage() {
+            var oReq = new XMLHttpRequest();
+            oReq.requestType = "json";
+            oReq.addEventListener("load", reqListener);
+            oReq.open("GET", "https://random.dog/woof.json");
+            oReq.send();
+        }
+
+    </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

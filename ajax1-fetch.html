@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script>
+        // JSON MDN -_- !!!!
+        // Header !!
+        var data;
+        
+        document.addEventListener("DOMContentLoaded", start);
+        function start(){
+            console.log("DOM loaded")
+        }
+        
+        fetch('data.json')
+        .then((response) => {
+            return response.json();
+        })
+        .then((myJson) => {
+            displayData(myJson);
+        });
+
+        function reqListener() {
+            data = JSON.parse(this.response);
+            displayData(data);
+            //console.log(data);
+            //console.log(event);
+            //console.log(this.response);
+            //console.log(this.responseText);
+        }
+
+        var oReq = new XMLHttpRequest();
+        oReq.requestType = "json";
+        oReq.addEventListener("load", reqListener);
+        oReq.open("GET", "data.json");
+        oReq.send();
+
+        function displayData(data) {
+            for ( var i = 0 ; i < data.squares.length ; i++ ) {
+                var div = document.createElement("div");
+                document.body.appendChild(div);
+                div.style.width = data.squares[i].width + "px"; 
+                div.style.height = data.squares[i].height +"px";
+                div.style.top = data.squares[i].x + "px";
+                div.style.left = data.squares[i].y + "px";
+                div.style.background = data.squares[i].color;
+                div.style.borderStyle = data.squares[i].borderStyle;
+                div.style.borderColor = data.squares[i].borderColor;
+                div.style.borderWidth = data.squares[i].borderWidth + "px";
+                div.style.position = "absolute";
+            }
+            
+
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

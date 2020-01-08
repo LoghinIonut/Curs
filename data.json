@@ -1,0 +1,54 @@
+{
+"squares": [
+{
+    "width": 20,
+    "height": 20,
+    "x": 30,
+    "y": 30,
+    "color": "red",
+    "borderStyle" : "solid",
+    "borderWidth" : 3,
+    "borderColor" : "black"
+},
+{
+    "width": 50,
+    "height": 50,
+    "x": 50,
+    "y": 50,
+    "color": "blue",
+    "borderStyle" : "solid",
+    "borderWidth" : 3,
+    "borderColor" : "black"
+},
+{
+    "width": 30,
+    "height": 30,
+    "x": 30,
+    "y": 30,
+    "color": "yellow",
+    "borderStyle" : "solid",
+    "borderWidth" : 3,
+    "borderColor" : "black"
+},
+{
+    "width": 60,
+    "height": 60,
+    "x": 60,
+    "y": 60,
+    "color": "green",
+    "borderStyle" : "solid",
+    "borderWidth" : 3,
+    "borderColor" : "black"
+},
+{
+    "width": 80,
+    "height": 80,
+    "x": 80,
+    "y": 80,
+    "color": "orange",
+    "borderStyle" : "solid",
+    "borderWidth" : 3,
+    "borderColor" : "black"
+}
+]
+}
