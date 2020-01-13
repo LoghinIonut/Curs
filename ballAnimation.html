@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", start);
+        function start() {
+            document.body.appendChild(ball.element)
+
+        }
+
+        class BallAnimation {
+            constructor(ballProperties) {
+                this.element = document.createElement("div"),
+                    this.element.className = ballProperties.className;
+                this.startx = ballProperties.startx,
+                    this.starty = ballProperties.starty,
+                    this.endx = ballProperties.endx,
+                    this.endy = ballProperties.endy,
+                    this.size = ballProperties.size,
+                    this.speed = ballProperties.speed,
+                this.horizontal = ballProperties.horizontal,
+                    this.anim = null,
+                    this.element.style.width //<--- CREAZA DIVU !!! 
+
+            }
+            startAnimation(){
+            this.anim = requestAnimationFrame(this.animate);
+
+
+        };
+            stopAnimation(){
+            this.anim = cancelAnimationFrame(this.animate);
+
+
+        }
+
+        }
+
+
+        var ball = new BallAnimation({
+            startx: "10px",
+            starty: "10px",
+            endx: "10px",
+            endy: "100px",
+            size: "10px",
+            speed: 1,
+            horizontal: true,
+            className: "ball"
+        });
+
+        function animate() {
+            for (var i = 0; i < this.ball.endy; i++) {
+                starty++;
+
+            }
+
+        };
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

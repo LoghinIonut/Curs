@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script src="Cat.js"></script>
+    <script src="Owner.js"></script>
+    <script>
+
+         // --> Cats <--
+
+        var tom = new Cat({
+            race: "norse",
+            name: "Tom",
+            color: "ginger",
+            age: 2,
+            hasFur: true,
+            owner: null,
+            tricks: ["spin", "stand", "his"]
+        });
+
+        var orphanCat = new Cat({
+            race: "norse",
+            name: "Pufi",
+            color: "ginger",
+            age: 2,
+            hasFur: true,
+            owner: null,
+            tricks: ["spin", "stand", "his"]
+        });
+
+        orphanCat.eat();
+        orphanCat.sleep();
+        orphanCat.doTrick();
+
+        var felix = new Cat({
+            race: "norse",
+            name: "Felix",
+            color: "ginger",
+            age: 2,
+            hasFur: true,
+            owner: null,
+            tricks: ["spin", "stand", "his"]
+        });
+
+        var tom = new Cat({
+            race: "norse",
+            name: "Tom",
+            color: "ginger",
+            age: 2,
+            hasFur: true,
+            owner: null,
+            tricks: ["spin", "stand", "his"]
+        });
+
+
+
+
+
+        // --> Owners <----
+
+        var gigi = new Owner({
+            cats: [],
+            address: "acasa",
+            name: "Gigi",
+            phone: 123
+
+
+        });
+
+
+
+        console.log(Owner);
+        console.log(Cat);
+
+        gigi.addCat(felix);
+        gigi.addCat(tom);
+        console.log("cats of", gigi.name, " ", gigi.cats);
+        console.table(gigi.cats)
+
+        gigi.removeCat("Felix")
+        console.log("cats of", gigi.name, " ", gigi.cats);
+        console.table(gigi.cats)
+
+        debugger;
+
+
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>
