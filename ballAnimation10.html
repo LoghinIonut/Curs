@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+
+    <script src="ballAnimation.js"></script>
+    
+    <script>
+
+        //diagrame UML !!!
+        // '${ }' = template strings
+
+        document.addEventListener("DOMContentLoaded", start);
+        var balls = [];
+
+        function start() {
+            var ball;
+            for (var i = 0 ; i < 10 ; i++) {
+                ball = new BallAnimation({
+                startX: Math.floor(Math.random() * 500),
+                startY: Math.floor(Math.random() * 500),
+                endX: Math.floor(Math.random() * 500),
+                endY: Math.floor(Math.random() * 500),
+                size: 15,
+                step: 1
+                });
+                balls.push(ball);
+                ball.element.addEventListener("click", ballClick);
+            }
+            
+        }
+
+        function ballClick(e) {
+            for (var i = 0 ; i < 10 ; i++) {
+                if (this == balls[i].element) {
+                    if (balls[i].currentX == balls[i].endX && balls[i].currentY == balls[i].endY) {
+                        balls[i].reset() 
+                    }                   
+                        balls[i].startAnimation();
+                }
+
+            }
+            
+        }
+
+        //function ballReset(e) {}
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -2,67 +2,104 @@
 <html>
 
 <head>
-    <title>Title of the document</title>
+    <title></title>
+
+    <script src="ballAnimation.js"></script>
+    <style>
+        .button {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 100px;
+            left: 100px;
+            background: green;
+        }
+
+        .button1 {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 100px;
+            left: 150px;
+            background: red;
+        }
+    </style>
     <script>
 
+        //diagrame UML !!!
+        // '${ }' = template strings
+
         document.addEventListener("DOMContentLoaded", start);
+        var ballAnim;
+        var ballAnim1;
+        var ballAnim2;
+
+
         function start() {
-            document.body.appendChild(ball.element)
+            var button = document.createElement("div");
+            var button1 = document.createElement("div");
+            document.body.appendChild(button);
+            document.body.appendChild(button1);
+            button.className = "button";
+            button1.className = "button1";
+            button.addEventListener("click", click);
+            button1.addEventListener("click", clickReset);
 
+
+
+            ballAnim1 = new BallAnimation({
+                startX: 20,
+                startY: 20,
+                endX: 600,
+                endY: 20,
+                size: 15,
+                step: 1,
+
+            });
+            ballAnim2 = new BallAnimation({
+                startX: 20,
+                startY: 40,
+                endX: 600,
+                endY: 40,
+                size: 15,
+                step: 1,
+
+            });
+            //ballAnim.startAnimation()
+            ballAnim1.element.addEventListener("click", ballClick);
+            ballAnim2.element.addEventListener("click", ballClick);
         }
 
-        class BallAnimation {
-            constructor(ballProperties) {
-                this.element = document.createElement("div"),
-                    this.element.className = ballProperties.className;
-                this.startx = ballProperties.startx,
-                    this.starty = ballProperties.starty,
-                    this.endx = ballProperties.endx,
-                    this.endy = ballProperties.endy,
-                    this.size = ballProperties.size,
-                    this.speed = ballProperties.speed,
-                this.horizontal = ballProperties.horizontal,
-                    this.anim = null,
-                    this.element.style.width //<--- CREAZA DIVU !!! 
-
+        function ballClick(e) {
+            if (this == ballAnim1.element) {
+                ballAnim1.startAnimation();
+            } else if (this == ballAnim2.element) {
+                ballAnim2.startAnimation();
             }
-            startAnimation(){
-            this.anim = requestAnimationFrame(this.animate);
-
-
-        };
-            stopAnimation(){
-            this.anim = cancelAnimationFrame(this.animate);
-
-
         }
 
-        }
+        var canAnimate = false;
 
-
-        var ball = new BallAnimation({
-            startx: "10px",
-            starty: "10px",
-            endx: "10px",
-            endy: "100px",
-            size: "10px",
-            speed: 1,
-            horizontal: true,
-            className: "ball"
-        });
-
-        function animate() {
-            for (var i = 0; i < this.ball.endy; i++) {
-                starty++;
-
+        function click() {
+            if (canAnimate == false) {
+                canAnimate = true;
+                ballAnim.startAnimation();
+            } else {
+                canAnimate = false;
+                ballAnim.stopAnimation();
             }
+        }
 
-        };
+        function clickReset() {
+            ballAnim.reset();
+        }
+
+
     </script>
 </head>
 
 <body>
-    The content of the document......
+
 </body>
 
 </html>
