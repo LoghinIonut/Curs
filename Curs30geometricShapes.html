@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<script src="geometricShape.js"></script>
+<script src ="Circle.js"></script>
+<script src ="Patrulater.js"></script>
+<script src ="Dreptunghi.js"></script>
+<script src ="Patrat.js"></script>
+<script src ="triunghi.js"></script>
+<script src ="trapez.js"></script>
+
+<script>
+    var circle = new Circle(50, 50, 100);
+    circle.area = function() {
+        console.log("o functie mai sus") // <-- acceseaza prima functie 'area' care o gaseste de sus in jos
+    }
+    var circle2 = new Circle(60, 60, 150);
+    console.log(circle.perimeter());
+    console.log(circle.area());
+
+    var d = new Dreptunghi(0, 0, 50, 50);
+    console.log(d.area(), d.perimeter(), d.name);
+
+    var p = new Patrat(40, 40, 30);
+    console.log(p.area(), p.perimeter(), p.name);
+
+    var t = new Triunghi(20, 30, 40);
+    console.log(t.area(), t.perimeter(), t.name);
+
+    var tp = new Trapez(0, 0, 30, 40, 20, 20, 20);
+    console.log(tp.area(), tp.perimeter(), tp.name);
+
+    //shadowing - functiile de mai sus le acopera pe cele de mai jos
+    //javascript - mostenire prototipala (prototype legacy)
+</script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
