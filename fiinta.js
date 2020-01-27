@@ -3,8 +3,8 @@ class fiinta {
         this.name = fiintaProperties.name;
         this.alive = true;
         this.age = fiintaProperties.age;
-        this.region = fiintaProperties.[];
-        this.gender = fiintaProperties.[];
+        this.region = fiintaProperties.region;
+        this.gender = fiintaProperties.gender;
     }
 
     breaths() {

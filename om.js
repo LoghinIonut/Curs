@@ -7,6 +7,14 @@ class om extends fiinta {
         this.married = omProperties.casatorit;
 
     }
+
+    works() {
+
+    }
+
+    hasHoby() {
+
+    }
     
 }
 
