@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // javascript : understanding the weierd parts - filelsit :)
+        // codewars !! !!!
+        class Rectangle2 {
+            constructor(x, y, width, height) {
+                this.x = x;
+                this.y = y;
+                this.height = height;
+                this.width = width;
+            }
+
+            area() {
+
+            }
+        }
+
+        function NewRectangle() {
+            Rectangle.call(this, 0, 0, 50, 50);
+        }
+
+        var newR = new NewRectangle();
+        console.log(newR)
+
+        function Rectangle(x, y, width, height) {
+            this.x = x;
+            this.y = y;
+            this.height = height;
+            this.width = width; 
+
+            // return {    <- se vor ignora proprietatile this. !!! se va returna doar cee in {}
+            //     a:4     <- va disparea si proto-ul
+            // }
+        }
+        Rectangle.prototype.area = function() {
+
+        }
+
+        Object.assign(Rectangle.prototype, {
+            perimetru: function perimetru() {
+
+            }
+        })
+
+
+        var r = new Rectangle(0, 0, 500, 500);
+        console.log(r);
+        console.log(r.x, r.y, r.width, r.height);
+        var r2 = new Rectangle2(0, 0, 500, 500);
+        console.log(r2);
+        console.log(r2.x, r2.y, r2.width, r2.height);
+
+
+
+        // 'this' se determina in functie de cum este apelata Functia !!!
+        // 1) f() - this = window (strict mode :this = undefined)
+        // 2) a.f() - this = a 
+        // b.f() - this = b
+        // var a = { 
+        //            f : function()
+        //         }
+        // 3) new - this se creaza implicit cand apelam new 
+        // 4) f.call(5,6,7) - this = cine pun eu : 5 ori 6 ori 7
+        // this MDN !!! cauta!
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

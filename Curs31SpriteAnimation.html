@@ -63,6 +63,7 @@
     <script src="AnimatedSprite.js"></script>
     <script src="clickableSprite.js"></script>
     <script src="clickAnimationSprite.js"></script>
+    <script src="keyAnimationSprite.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", start);
@@ -71,6 +72,7 @@
         var clickCallback;
         var clickableSprite;
         var clickAnim;
+        var keyAnim;
         function start() {
             sp = new Sprite({
                 x: 0,
@@ -106,6 +108,21 @@
                 ]
             })
 
+            keyAnim = new KeyAnimationSprite({
+                x: 200,
+                y: 0,
+                width: 25,
+                height: 35,
+                classes: ["frame1",
+                    "frame2",
+                    "frame3",
+                    "frame4",
+                    "frame5",
+                    "frame6",
+                    "frame7",
+                    "frame8",
+                ]
+            })
 
 
 
@@ -130,6 +147,7 @@
             document.body.appendChild(animatedSprite.element);
             document.body.appendChild(clickableSprite.element);
             document.body.appendChild(clickAnim.element);
+            document.body.appendChild(keyAnim.element);
 
 
             clickableSprite.x = 50;
