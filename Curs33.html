@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+       // polimorfism !! cauta
+       // closer - referinta catre o variabila din afara functie!
+
+       var foo = "foo global";
+       let foo2 = "foo2 global";
+              var a = {
+                  f: function() {
+                      let foo = "foo din a";
+                      console.log(this); // este functia a , datorita modului de apelare a.f()
+                      var b = function() {
+                          console.log(foo); // este "foo din a" - prima variabila care o gaseste
+                          console.log(this.foo); // foo global -
+                          console.log(this.foo2); // undefined -
+                          console.log(this); // window -
+                        };
+                    b();
+                  }
+              }
+              a.f();
+
+    //Bind - returneaza o functie noua a carui this este prestabilit
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
