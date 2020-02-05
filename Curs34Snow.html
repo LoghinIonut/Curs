@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .snowflake {
+            position: absolute;
+            border-radius: 50%;
+            background-color: azure;
+            display: inline-block;
+            box-shadow: 0px 0px 10px 0px rgba(255,255,255,1);
+        }
+    </style>
+    <script src="Spritesnow.js"></script>
+    <script src="Snowflake.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var SnowVector = [];
+        var snowflake;
+        
+
+
+        function start() {
+            for (var i = 0; i < 200; i++) {
+                size = Math.floor(Math.random() * 10),
+                snowflake = new Snowflake({
+                    x: window.innerWeigth ,
+                    y: window.innerHeight ,
+                    width: size,
+                    height: size,
+                    class: "snowflake",
+                });
+                document.body.appendChild(snowflake.element);
+                SnowVector.push(snowflake);
+                //console.log(SnowVector);
+            };
+            window.requestAnimationFrame(animate)
+           
+        };
+
+        function animate() {
+            for (var i = 0; i < 200; i++) {
+            SnowVector[i].animate();
+            
+            }
+            requestAnimationFrame(animate);
+
+        }
+
+       
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
