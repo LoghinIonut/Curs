@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ball {
+            position: absolute;
+            display: inline-block;
+            background: red;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            animation: 
+            move 2s infinite,
+            resize 3s infinite alternate,
+            fade 1s infinite alternate
+
+        }
+
+        @keyframes move {
+            0% {top: 0; left: 0;}
+            50% {top: 30%; left: 20%;}
+            50% {top: 10%; left: 20%;}
+            100% {top: 0; left: 0;}
+        }
+
+        @keyframes resize {
+            from {width: 50px; height: 50px}
+            to {width: 150px; height: 150px}
+        }
+
+        @keyframes fade {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ball"></div>
+
+</body>
+
+</html>

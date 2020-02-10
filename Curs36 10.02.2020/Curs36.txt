@@ -1,0 +1,18 @@
+moduri de apelare functii:                                          diagrame : www.drawio !!!
+null - object ; undefined - undefined ;  
+1. Apel simplu f(); -> this in window
+                    -> strict mode => this = undefined;
+2. Apel cu parametru a.f(); -> this = a ;
+3. Apel cu New f(); -> this = un obiect nou;
+4. Bind , Call , Apply : thisul va fi cel pasat in bindare/call/apply;
+
+5. ArrowFunction : this = contrexul lexical = valoarea thisului cand se creeaza functia
+6. AddEventListener : this va fi elem pe care adaug listenerul;
+
+
+Map - o functie care se aplica pe fiecare elem a unui vector . Intoarce un vector .
+Filter - intoarce un vector nou cu elem a unui vector. elem ce respecta conditia.
+Reduce - MDN
+
+Pasi de rendare browser : 
+Curba bezier !!
