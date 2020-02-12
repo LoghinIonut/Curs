@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background: black;
+        }
+
+        .snowflake {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background:  white;
+        }
+
+        @keyframes snowfall {
+            0% {
+                top: 100%;
+            }
+
+            100% {
+                top: 0;
+                /* bottom: 0; */
+            }
+        
+            
+        }
+
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translateX(0)
+            }
+            50% {
+                transform: translateX(80px)
+            }
+        }
+
+        .snowflake::nth-of-type(0) {
+            left: 1%;
+            animation:
+            snowfall 1s infinite,
+            shake 1s alternate infinite;
+        }
+        .snowflake:nth-of-type(1) {
+            left: 12%;
+            animation:
+            snowfall 3s infinite,
+            shake 2s infinite alternate;
+        }
+        .snowflake:nth-of-type(2) {
+            left: 25%;
+            animation:
+            snowfall 7s infinite,
+            shake 4s infinite alternate;
+        }
+        .snowflake:nth-of-type(3) {
+            left: 32%;
+            animation:
+            snowfall 10s infinite,
+            shake 5s infinite alternate;
+        }
+        .snowflake:nth-of-type(4) {
+            left: 44%;
+            animation:
+            snowfall 2s infinite,
+            shake 1s infinite alternate;
+        }
+        .snowflake:nth-of-type(5) {
+            left: 50%;
+            animation:
+            snowfall 6s infinite,
+            shake 4s infinite alternate;
+        }
+        .snowflake:nth-of-type(6) {
+            left: 63%;
+            animation:
+            snowfall 3s infinite,
+            shake 2s infinite alternate;
+        }
+        .snowflake:nth-of-type(7) {
+            left: 75%;
+            animation:
+            snowfall 5s infinite,
+            shake 3s infinite alternate;
+        }
+        .snowflake:nth-of-type(8) {
+            left: 87%;
+            animation:
+            snowfall 10s infinite,
+            shake 8s infinite alternate;
+        }
+        .snowflake:nth-of-type(9) {
+            left: 100%;
+            animation:
+            snowfall 8s infinite,
+            shake 2s infinite alternate;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+
+</body>
+
+</html>

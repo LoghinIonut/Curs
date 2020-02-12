@@ -2,11 +2,11 @@ moduri de apelare functii:                                          diagrame : w
 null - object ; undefined - undefined ;  
 1. Apel simplu f(); -> this in window
                     -> strict mode => this = undefined;
-2. Apel cu parametru a.f(); -> this = a ;
-3. Apel cu New f(); -> this = un obiect nou;
-4. Bind , Call , Apply : thisul va fi cel pasat in bindare/call/apply;
+2. Apel cu prefixare/parametru a.f(); -> this = a ; (object method)
+3. Apel cu New f(); -> this = un obiect nou; (creat implicit cu functia noua)
+4. Bind , Call , Apply : thisul va fi cel pasat in bindare/call/apply; - setez explicit thisul in functia in care intru
 
-5. ArrowFunction : this = contrexul lexical = valoarea thisului cand se creeaza functia
+5. ArrowFunction : this =  se va lua din contexul lexical = valoarea thisului cand se creeaza functia 
 6. AddEventListener : this va fi elem pe care adaug listenerul;
 
 
@@ -15,4 +15,18 @@ Filter - intoarce un vector nou cu elem a unui vector. elem ce respecta conditia
 Reduce - MDN
 
 Pasi de rendare browser : 
+
+
 Curba bezier !!
+
+
+Context de executie:
+Stiva/Stack - structura de date - modalitate de a tine evidenta a locului unde ma aflu - cand creez un program intru in global context apoi in functia1 , 2 etc
+      - dupa terminarea functie ne vom intoarce in global context !.
+      - context global - locul unde ruleazsa programul mereu 
+      - orice functie adauga un context de executie.
+
+This - o proprietate din contextul actual de executie
+
+Stack MDN cauta !!!
+Stack overflaw - infinite loop - eroare/crash.

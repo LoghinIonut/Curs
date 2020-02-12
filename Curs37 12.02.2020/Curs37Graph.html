@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Graph.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", start)
+        var url = "https://api.exchangeratesapi.io/history?start_at=2018-01-01&end_at=2018-02-20&base=EUR&symbols=USD";
+        var xhr = new XMLHttpRequest();
+        xhr.open(`GET`, url, true);
+        var data;
+        var dates;
+        var dataSeries = [];
+        var graph;
+        var documentLoaded = false;
+        var dataLoaded = false;
+
+        function start() {
+            documentLoaded = true;
+            startIfEvryrhingReady();
+
+        }
+
+        function startIfEvryrhingReady() {
+            if (documentLoaded && dataLoaded) {
+                graph = new Graph({
+                    width: 1000,
+                    height: 300,
+                    dataSeries : dataSeries
+                });
+                document.body.appendChild(graph.canvas);
+
+            }
+        }
+
+        xhr.onload = function () {
+            dataLoaded = true;
+            data = JSON.parse(this.response).rates;
+            dates = Object.keys(data).sort();
+
+            for (var i = 0; i < dates.length; i++) {
+                dataSeries.push({
+                    y: data[dates[i]].USD,
+                    label: dates[i]
+                });
+            }
+            startIfEvryrhingReady();
+            
+        }
+
+        xhr.send();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
