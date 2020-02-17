@@ -1,0 +1,13 @@
+object.create , object.assign, map , create , filter !!!
+
+Bazae de numeratie (nr de caractere pt reprezentare): 
+2: 0 , 1
+8: 0 , 1 , 2 ,..., 7
+10: 0,...,9
+16: 0, ....,9, 10 (A) , 11(B) , 12(C), 13(D) , 14(E), 15(F),
+
+#AA/AF/FF
+0-255/0-255/0-255
+2^8/2^8/2^8
+
+1byte = octet = 8biti

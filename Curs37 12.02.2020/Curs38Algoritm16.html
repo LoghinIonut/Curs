@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        var n = 1011;
+        var s = 0;
+        var p = 0;
+        var uc;
+        while (n > 0) {
+            uc = n % 10; // iau ultima cifra
+            s += uc * 2**p; //
+            n = parseInt(n/10); // 
+            p++;
+            
+        }
+
+        console.log(s)
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

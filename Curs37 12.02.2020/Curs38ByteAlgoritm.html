@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+        var nr = 174;
+        var cat;
+        var rest;
+        var vector = [];
+        var baza = 16;
+        var dict = {
+            10: "A",
+            11: "B",
+            12: "C",
+            13: "D",
+            14: "E",
+            15: "F"
+        };
+
+        cat = parseInt(nr / baza);
+        rest = nr % baza;
+        vector.push(rest);
+
+        
+            do {
+                cat = parseInt(nr / baza);
+                rest = nr % baza;
+                nr = parseInt(nr / baza);
+                vector.push(rest);
+            } while (cat > 0);
+            vector = vector.map((item) => {
+                if (item > 9) {
+                    return dict[item];
+                }
+                return item;
+
+            }); 
+        
+
+        console.log(vector.reverse().join(""));
+
+    </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

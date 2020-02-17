@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="Graph2.js"></script>
+    <style></style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", start);
+
+      var url =
+        "https://api.exchangeratesapi.io/history?start_at=2018-01-01&end_at=2018-02-20&base=EUR&symbols=USD,JPY";
+
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url, true);
+      var data;
+      var dates;
+      var dataSeriesUSD = [];
+      var dataSeriesJPY = [];
+      var graph;
+      var graph2;
+
+      var documentLoaded = false;
+      var dataLoaded = false;
+
+      function start() {
+        documentLoaded = true;
+        startIfEverythingReady();
+      }
+
+      function startIfEverythingReady() {
+        if (documentLoaded && dataLoaded) {
+          graph = new Graph({
+            width: 1000,
+            height: 300,
+            dataSeries: dataSeriesUSD
+          });
+          graph2 = new Graph({
+            width: 1000,
+            height: 300,
+            dataSeries: dataSeriesJPY
+          });
+          document.body.appendChild(graph.canvas);
+          document.body.appendChild(graph2.canvas);
+        }
+      }
+
+      xhr.onload = function() {
+        dataLoaded = true;
+        data = JSON.parse(this.response).rates;
+
+        dates = Object.keys(data).sort();
+        console.log(data[dates[3]]);
+        for (var i = 0; i < dates.length; i++) {
+          dataSeriesUSD.push({
+            y: data[dates[i]].USD,
+            x: dates[i]
+          });
+          dataSeriesJPY.push({
+            y: data[dates[i]].JPY,
+            x: dates[i]
+          });
+        }
+        startIfEverythingReady();
+        console.log(dataSeriesUSD);
+      };
+
+      xhr.send();
+    </script>
+  </head>
+
+  <body></body>
+</html>
