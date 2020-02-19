@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var data;
+        var obj = [];
+        var name = [];
+
+        function reqListener(event) {
+           
+            obj = JSON.parse(this.response);
+            console.log(obj);
+            //name = obj.data
+            //obj["employee_name"]
+            for (i = 0; i < obj.data.length; i++) {
+                         name = obj.data[i]["employee_name"]; // < - parcurge data si pune mana pe employee_name
+                         console.log(name);
+              }
+
+            displayData(); // NU UITA ! APELEAZA FUNCTIILE!!!!
+
+        }
+
+        function displayData(data) {
+            var table = document.createElement("table");
+            document.body.appendChild(table);
+
+            for (i = 0; i < obj.data.length; i++) {
+                tr = document.createElement("tr");
+
+                let td1 = document.createElement("td");
+                let td2 = document.createElement("td");
+                let td3 = document.createElement("td");
+                let td4 = document.createElement("td");
+
+                td1.innerHTML = obj.data[i].id;
+                td2.innerHTML = obj.data[i].employee_name;
+                td3.innerHTML = obj.data[i].employee_salary;
+                td4.innerHTML = obj.data[i].employee_age;
+
+                table.appendChild(tr);
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                tr.appendChild(td4);
+
+
+            }
+        }
+
+        var oReq = new XMLHttpRequest();
+        oReq.requestType = "json";
+        oReq.addEventListener("load", reqListener);
+
+        oReq.open("GET", "http://dummy.restapiexample.com/api/v1/employees");
+        oReq.send();
+
+        //stilizare table !
+        //boots strap.
+
+
+       
+
+        
+
+       
+       
+
+
+
+    </script>
+
+
+</head>
+
+<body>
+
+</body>
+
+</html>

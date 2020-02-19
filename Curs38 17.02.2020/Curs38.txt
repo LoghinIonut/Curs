@@ -11,3 +11,4 @@ Bazae de numeratie (nr de caractere pt reprezentare):
 2^8/2^8/2^8
 
 1byte = octet = 8biti
+
