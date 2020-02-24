@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Document</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            padding: 0;
+        }
+
+        div {
+            position: absolute;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: red;
+            border-radius: 50%;
+            left: 0;
+            top: 0;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var div;
+        var canDrag = false;
+        var Coordonate = [];
+        var frame;
+        var index = 0;
+        var frame2;
+        var mouseX;
+        var mouseY;
+        var direction = 1;
+
+        function start() {
+            createDiv();
+
+        }
+
+        function createDiv() {
+            div = document.createElement("div");
+            document.body.appendChild(div);
+            div.addEventListener("mousedown", divMouseDown);
+            document.body.addEventListener("mouseup", divMouseUp);
+            document.body.addEventListener("mousemove", divMouseMove);
+
+        }
+
+        function divMouseDown() {
+            canDrag = true;
+            Coordonate = [];
+            var left = this.style.left;
+            var leftValue = parseInt(left.slice(0, left.length - 2));
+            frame2 = requestAnimationFrame(pushCoord);
+            index = 0;
+            direction = 1;
+        }
+
+        function pushCoord() {
+            console.log("requestAnimationFrame");
+            frame2 = requestAnimationFrame(pushCoord);
+            if (canDrag) {
+                Coordonate.push({
+                    x: mouseX,
+                    y: mouseY
+                });
+                div.style.top = `${mouseY}px`;
+                div.style.left = `${mouseX}px`;
+            }
+        }
+
+        function divMouseMove(event) {
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+        }
+
+        function divMouseUp() {
+            if (canDrag == true) {
+            canDrag = false;
+            console.log(Coordonate);
+            cancelAnimationFrame(frame2);
+            requestAnimationFrame(remakePath);
+            }
+
+        }
+
+        function remakePath() {
+            div.style.top = `${Coordonate[index].y}px`;
+            div.style.left = `${Coordonate[index].x}px`;
+            index += direction;
+            if (index == Coordonate.length - 1) {
+                direction = -1;
+                frame = requestAnimationFrame(remakePath);
+            } 
+
+            if (index == 0) {
+                return;
+            }
+            requestAnimationFrame(remakePath);
+          
+           
+
+
+
+        }
+    </script>
+
+
+</head>
+
+<body>
+
+</body>
+
+</html>
