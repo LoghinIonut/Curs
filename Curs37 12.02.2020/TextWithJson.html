@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="TextJSON.json"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var data;
+        function start() {
+            var xobj = new XMLHttpRequest();
+            xobj.overrideMimeType("application/json");
+            xobj.open('GET', 'TextJSON.json', true);
+            xobj.onreadystatechange = function () {
+          if (xobj.readyState == 4 && xobj.status == "200") {
+            callback(xobj.responseText);
+          }
+          
+        }
+        xobj.send(null); 
+    }
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
