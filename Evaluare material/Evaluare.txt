@@ -1,0 +1,6 @@
+Evaluarea 1
+1 tabel , 1 roleover , 1 menu
+
+pt rolover :
+efect 7 , 8, 28 ,
+efect verde
