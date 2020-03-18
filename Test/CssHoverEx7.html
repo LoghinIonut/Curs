@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: stretch;
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+
+        .smallContainer {
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            height: 200px;
+            flex: 1;
+        }
+
+        .genericButton {
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            height: 20%;
+            z-index: 2;
+            color: white;
+            overflow: hidden;
+            border: 1px white;
+            border-style: solid;
+            position: relative;
+            width: 60%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-80%, -50%);
+        }
+
+        #login {
+            background-color: rgb(255, 187, 0);
+        }
+
+        #register {
+            background-color: rgb(75, 93, 126);
+        }
+
+        #password {
+            background-color: rgb(33, 35, 41);
+        }
+
+        span {
+            position: relative;
+            top: 30%;
+
+
+        }
+
+        .genericButton::before {
+            content: "";
+            position: absolute;
+            transition: 0.5s all ease;
+            top: 50%;
+            bottom: 50%;
+            left: 0;
+            right: 0;
+            background: white;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .genericButton:hover:before {
+            content: "";
+            vertical-align: middle;
+            position: absolute;
+            transition: 0.5s all ease;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: white;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="smallContainer" id="login">
+            <div class="genericButton"><span>Login</span></div>
+        </div>
+        <div class="smallContainer" id="register">
+            <div class="genericButton"><span>Register</span></div>
+        </div>
+        <div class="smallContainer" id="password">
+            <div class="genericButton"><span>Recover</span></div>
+        </div>
+    </div>
+</body>
+
+</html>
