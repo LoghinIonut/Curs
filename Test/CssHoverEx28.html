@@ -35,8 +35,7 @@
             z-index: 2;
             color: white;
             overflow: hidden;
-            border: 1px white;
-            border-style: solid;
+            border: none;
             position: relative;
             width: 60%;
             top: 50%;
@@ -49,7 +48,7 @@
         }
 
         #register {
-            background-color: rgb(94, 117, 160);
+            background-color: rgb(94, 117, 160)
         }
 
         #password {
@@ -59,20 +58,25 @@
         span {
             position: relative;
             top: 30%;
+        }
 
-
+        .genericButton:hover {
+              letter-spacing: 1.5px;
+              transition: 0.5s all ease;
         }
 
         .genericButton::before {
             content: "";
             position: absolute;
             transition: 0.5s all ease;
-            top: 50%;
-            bottom: 50%;
+            top: 0;
+            bottom: 0;
             left: 0;
             right: 0;
+            border-top: 2px solid white;
+            border-bottom: 2px solid white;
             background: white;
-            opacity: 0;
+            opacity: 0.3;
             z-index: -1;
         }
 
@@ -83,11 +87,42 @@
             transition: 0.5s all ease;
             top: 0;
             bottom: 0;
+            right: 50%;
+            left: 50%;
+            background: white;
+            opacity: 0;
+        }
+
+        .genericButton::after {
+            content: "";
+            position: absolute;
+            transition: 0.5s all ease;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            right: 50%;
+            border: none;
+            border-top: 0.5px solid white;
+            border-bottom: 0.5px solid white;
+            opacity: 0;
+            z-index: -1;
+        }
+
+
+        .genericButton:hover:after {
+            content: "";
+            vertical-align: middle;
+            position: absolute;
+            transition: 0.5s all ease;
+            top: 0;
+            bottom: 0;
             right: 0;
             left: 0;
-            background: white;
-            opacity: 0.3;
+            border-top: 0.5px solid white;
+            border-bottom: 0.5px solid white;
+            opacity: 1;
         }
+
     </style>
 </head>
 
