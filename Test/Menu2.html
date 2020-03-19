@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            width: 100vw;
+            height: 50px;
+            background: green;
+            border-bottom: 20px solid rgb(196, 245, 168);
+        }
+
+        div {
+            display: inline-block;
+            margin: auto;
+            color: rgb(174, 243, 174);
+        }
+
+        .div2 {
+            display: inline-block;
+            margin: auto;
+            color: white;
+        }
+
+        .div2::after {
+            content: "";
+            position: relative;
+            top:5px;
+            left: -47px;
+            border-top: 12px transparent solid;
+            border-left: 12px transparent solid;
+            border-right: 12px transparent solid;
+            border-bottom: 12px rgb(176, 240, 176) solid;;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>HOME</div>
+        <div class="div2">BOOKING</div>
+        <div>PASSENGER INFORMATION</div>
+        <div>CUSTOMER SERVICE</div>
+        <div>ABOUT US</div>
+        <div>FANSHOP</div>
+    </div>
+</body>
+</html>

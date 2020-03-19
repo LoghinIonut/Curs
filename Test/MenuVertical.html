@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+    <style>
+        .container {
+            border-radius: 5%;
+            display: flex;
+            position: absolute;
+            width: 600px;
+            height: 400px;
+            background: rgb(16, 40, 92);
+            overflow: hidden;
+        }
+
+        .image {
+            position: absolute;
+            top: 50px;
+        }
+
+        .food {
+            position: absolute;
+            background: rgb(216, 205, 205);
+            left: 530px;
+            width: 70px;
+            height: 50px;
+            cursor: pointer;
+            transition: .5s;
+        }
+
+        .food:hover {
+            left: 230px;
+        }
+
+        .menu {
+            position: absolute;
+            left: 70px;
+            width: 300px;
+            height: 400px;
+            background: rgb(7, 24, 61);
+            color: white;
+            opacity: 0;
+            transition: .2s;
+        }
+
+        .menu:hover {
+            opacity: 1;
+        }
+
+        .title {
+            font-size: 30px;
+            font-style: italic;
+        }
+
+        .div {
+            position: relative;
+            top: 20px;
+            font-size: 25px;
+            padding: 20px 0px 20px 0px;
+        }
+        
+        #home {
+            font-size: 25px;
+            color: red;
+            padding: 20px 0 0 0;
+            top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="image">
+            <img src="Food.jpg">
+        </div>
+        <div class="foodMenu">
+            <div class="food">
+                <div class="menu">
+                    <div class="title">Curt's Special Recipe</div>
+                    <div class="div" id="home">HOME</div>
+                    <div class="div">GALLERY</div>
+                    <div class="div">WHERE TO BUY</div>
+                    <div class="div">CONTACT</div>
+                    <div class="div">SHOP</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

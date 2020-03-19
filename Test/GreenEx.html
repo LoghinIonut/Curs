@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            position: absolute;
+            width: 700px;
+            height: 400px;
+            background-color: rgb(79, 197, 79);
+            transform: translateY(-50%);
+            top: 35%;
+            left: 5%;
+        }
+
+        .containerButtons {
+            position: absolute;
+            width: 700px;
+            height: 400px;
+            left: 0;
+            right: 0;
+        }
+
+        .button {
+            position: relative;
+            display: inline-block;
+            width: 230px;
+            height: 50px;
+            border: 2px solid white;
+            background-color: rgb(39, 185, 39);
+            border-radius: 40px;
+            margin: 50px;
+            padding: 5px;
+            text-align: center;
+            margin-top: 75px;
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        .button>span {
+            color: white;
+            line-height: 3;
+        }
+
+        .arrow1 {
+            position: absolute;
+            color: white;
+            font-size: 25px;
+            right: -25px;
+            margin-top: -40px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .arrow2 {
+            position: absolute;
+            color: white;
+            font-size: 25px;
+            right: 50px;
+            margin-top: -40px;
+            font-weight: bold;
+            transition: .3s;
+            opacity: 0;
+        }
+
+        .arrow3 {
+            position: absolute;
+            color: white;
+            font-size: 25px;
+            left: -25px;
+            margin-top: -40px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .arrow4 {
+            position: absolute;
+            color: white;
+            font-size: 25px;
+            left: 50px;
+            margin-top: -40px;
+            font-weight: bold;
+            transition: .3s;
+            opacity: 0;
+        }
+
+        .button:hover>.arrow1 {
+            right: 25px;
+        }
+
+        .button:hover>.arrow2 {
+            right: 25px;
+            opacity: 1;
+        }
+
+        .button:hover>.arrow3 {
+            left: 25px;
+        }
+
+        .button:hover>.arrow4 {
+            left: 25px;
+            opacity: 1;
+        }
+
+        .button:hover {
+            background-color: rgb(28, 138, 28);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="containerButtons">
+            <div class="button">
+                <span>CONTINUE</span>
+                <div class="arrow1">&rarr;</div>
+            </div>
+            <div class="button">
+                <span>RETURN</span>
+                <div class="arrow3">&larr;</div>
+            </div>
+            <div class="button">
+                <span>CONTINUE</span>
+                <div class="arrow2">&rarr;</div>
+            </div>
+            <div class="button">
+                <span>RETURN</span>
+                <div class="arrow4">&larr;</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
