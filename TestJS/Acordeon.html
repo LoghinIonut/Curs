@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        display: inline-block;
+        width: 300px;
+        height: 300px;
+    }
+
+    .segment {
+        width: 300px;
+        padding-left: 10px;
+        height: 0;
+        opacity: 0;
+        transition: .3s;
+    }
+
+    .tabName {
+        display: inline-block;
+        width: 300px;
+        height: 25px;
+        border: 1px solid black;
+        padding: 5px;
+    }
+
+    .button {
+        width: 25px;
+        height: 25px;
+        float: right;
+        cursor: pointer;
+    }
+
+    .expand {
+        height: 50px;
+        opacity: 1;
+        border: 1px solid black
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", start);
+    var list = [
+        {
+            tabName: "section1",
+            body: "text in body"
+        },
+        {
+            tabName: "section2",
+            body: "text in body"
+        },
+        {
+            tabName: "section3",
+            body: "text in body"
+        },
+        {
+            tabName: "section4",
+            body: "text in body"
+        },
+        {
+            tabName: "section5",
+            body: "text in body"
+        },
+        {
+            tabName: "section6",
+            body: "text in body"
+        }
+    ];
+
+    function start() {
+        var container = document.createElement("div");
+        container.className = "container";
+        document.body.appendChild(container);
+        var button;
+        var tabName;
+        var segment;
+
+        for (var i = 0; i < list.length; i++) {
+            console.log(list[i].tabName);
+            tabName = document.createElement("div");
+            segment = document.createElement("div");
+            button = document.createElement("button");
+            button.className = "button";
+            button.innerHTML = "+";
+            segment.className = "segment";
+            tabName.className = "tabName";
+            tabName.innerHTML = list[i].tabName;
+            segment.innerHTML = list[i].body;
+            container.appendChild(tabName);
+            container.appendChild(segment);
+            tabName.appendChild(button);
+            button.addEventListener("click", buttonClick);
+        }
+
+        function buttonClick() {
+            if (this.innerHTML === "-") {
+                this.innerHTML = "+";
+            } else {
+                this.innerHTML = "-";
+            }
+            var segment = this.parentElement.nextElementSibling;
+            segment.classList.toggle("expand");
+        }
+    }
+</script>
+
+<body>
+
+</body>
+
+</html>
