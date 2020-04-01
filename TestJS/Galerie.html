@@ -1,0 +1,305 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Galerie</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .gallery {
+            margin-top: -1000px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            overflow: hidden;
+        }
+
+        .textGalleryImage {
+            position: absolute;
+            padding-left: 2px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-top: 0.5px black;
+            border-left: 0;
+            border-bottom: 0;
+            border-right: 0;
+            border-style: solid;
+            bottom: 0;
+            height: 0;
+            overflow: hidden;
+            transition: height 2s;
+        }
+
+        .title {
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+        }
+
+        .description {
+            padding-top: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+        }
+
+        .imagesContainer {
+            position: relative;
+            align-content: center;
+            min-width: 300px;
+            height: 300px;
+            margin-left: 5px;
+            margin-right: 5px;
+            border: 1px black;
+            border-style: solid;
+        }
+
+        .imagesContainer:hover {
+            background-color: rgba(236, 220, 75, 0.3);
+        }
+
+        .imagesContainer:hover>.textGalleryImage {
+            height: 60px;
+            z-index: 2;
+        }
+
+        .image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .onClickImageContainer {
+            margin-top: 0px;
+            border: 1px black;
+            border-style: solid;
+            background-color: rgb(187, 209, 248, 0.8);
+            visibility: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .closingX {
+            position: absolute;
+            top: 80px;
+            right: 80px;
+            height: 60px;
+            cursor: pointer;
+        }
+
+        .titleOnClick {
+            position: absolute;
+            margin-left: 150px;
+            top: 900px;
+            color: white;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .descriptionOnClick {
+            position: absolute;
+            bottom: 50px;
+            margin-left: 150px;
+            color: white;
+        }
+
+        .imageOnClickDiv {
+            position: absolute;
+            margin: 150px;
+            width: 900px;
+            height: 700px;
+            background-color: blue;
+            border: 1px black;
+            border-style: solid;
+        }
+        
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        document.onkeydown = escape;
+
+        function escape(e) {
+                console.log("escape");
+                if (e.key === "Escape") {
+                    onClickImageContainer.style.visibility = "hidden";
+                }
+            }
+
+        var galleryWidth = 1250;
+        var galleryHeight = 1000;
+        var numberOfImages = 12;
+        var data;
+
+        function start() {
+            createGalleryStructure();
+        }
+
+        function createGalleryStructure() {
+            galleryDiv = document.createElement("div");
+            galleryDiv.className = "gallery"
+            galleryDiv.style.width = `${galleryWidth}px`;
+            galleryDiv.style.height = `${galleryHeight}px`;
+            onClickImageContainer = document.createElement("div");
+            onClickImageContainer.className = "onClickImageContainer";
+            onClickImageContainer.style.width = `${galleryWidth}px`;
+            onClickImageContainer.style.height = `${galleryHeight}px`;
+            var closingX = document.createElement("div");
+            closingX.className = "closingX";
+            closingX.innerHTML = `<i class="fa fa-window-close" aria-hidden="true"></i>`;
+            closingX.onclick = closing;
+            onClickImageContainer.appendChild(closingX);
+
+            function closing() {
+                onClickImageContainer.style.visibility = "hidden";
+            }
+
+            var imageOnClickDiv = document.createElement("div");
+            imageOnClickDiv.className = "imageOnClickDiv";
+            var imageOnClick = document.createElement("img");
+            imageOnClick.className = "imageOnClick";
+            imageOnClick.id = "fullScreenImage";
+            imageOnClick.style.maxWidth = '900px';
+            imageOnClick.style.maxHeight = '700px';
+            imageOnClick.style.minWidth = '900px';
+            imageOnClick.style.minHeight = '700px';
+            imageOnClickDiv.appendChild(imageOnClick);
+            onClickImageContainer.appendChild(imageOnClickDiv);
+            var titleContentOnClick = document.createElement("div");
+            titleContentOnClick.innerText = "Heading";
+            titleContentOnClick.className = "titleOnClick";
+            onClickImageContainer.appendChild(titleContentOnClick);
+            var descriptionContentOnClick = document.createElement("div");
+            descriptionContentOnClick.innerText = "Lorem Ipsum is simply dummy text of the printing and typesetting industry";
+            descriptionContentOnClick.className = "descriptionOnClick";
+            onClickImageContainer.appendChild(descriptionContentOnClick);
+            document.body.appendChild(onClickImageContainer);
+
+            for (let i = 0; i < numberOfImages; i++) {
+                var oReq = new XMLHttpRequest();
+                oReq.addEventListener("load", reqListener);
+                oReq.open("GET", "https://random.dog/woof.json");
+                oReq.send();
+
+                function reqListener() {
+                    data = JSON.parse(this.response);
+                    imagesContainerDiv = document.createElement("div");
+                    imagesContainerDiv.className = "imagesContainer";
+                    imagesContainerDiv.id = "imagesId-" + i;
+
+                    textGallertImage = document.createElement("div");
+                    textGallertImage.className = "textGalleryImage";
+                    textGallertImage.style.width = 300;
+                    var titleContent = document.createElement("div");
+                    titleContent.innerText = "Heading";
+                    titleContent.className = "title";
+                    textGallertImage.appendChild(titleContent);
+                    var descriptionContent = document.createElement("div");
+                    descriptionContent.innerText = "Lorem Ipsum is simply dummy text of the printing and typesetting industry";
+                    descriptionContent.className = "description";
+                    textGallertImage.appendChild(descriptionContent);
+                    imagesContainerDiv.appendChild(textGallertImage);
+
+
+                    function expand(url, idx) {
+                        console.log(idx);
+                        var imageOnClick = document.getElementById("fullScreenImage");
+                        imageOnClick.src = url;
+                        onClickImageContainer.style.visibility = "visible";
+                        console.log(url);
+                    }
+
+                    imagesContainerDiv.onclick = expand.bind(null, data.url, i);
+
+                    var extension = data.url.substring(data.url.lastIndexOf(".") + 1);
+                    if (extension.toLowerCase() == "mp4" || extension.toLowerCase() == "webm") {
+                        var video = document.createElement("video");
+                        video.className = "video";
+                        video.setAttribute("controls", true);
+                        if (i % 4 == 0) {
+                            video.style.maxWidth = '150px';
+                            video.style.maxHeight = '150px';
+                            video.style.minWidth = '150px';
+                            video.style.minHeight = '150px';
+                            console.log(i);
+                        } else if (i % 4 == 1) {
+                            video.style.maxWidth = '250px';
+                            video.style.maxHeight = '250px';
+                            video.style.minWidth = '250px';
+                            video.style.minHeight = '250px';
+                        } else if (i % 4 == 2) {
+                            video.style.maxWidth = '200px';
+                            video.style.maxHeight = '150px';
+                            video.style.minWidth = '200px';
+                            video.style.minHeight = '150px';
+                        } else {
+                            video.style.maxWidth = '150px';
+                            video.style.maxHeight = '200px';
+                            video.style.minWidth = '150px';
+                            video.style.minHeight = '200px';
+                        }
+                        var source = document.createElement("source");
+                        video.appendChild(source);
+                        source.src = data.url;
+                        imagesContainerDiv.appendChild(video);
+                    } else {
+                        var image = new Image();
+                        image.className = "image";
+                        if (i % 4 == 0) {
+                            image.style.maxWidth = '150px';
+                            image.style.maxHeight = '150px';
+                            image.style.minWidth = '150px';
+                            image.style.minHeight = '150px';
+                            console.log(i);
+                        } else if (i % 4 == 1) {
+                            image.style.maxWidth = '250px';
+                            image.style.maxHeight = '250px';
+                            image.style.minWidth = '250px';
+                            image.style.minHeight = '250px';
+                        } else if (i % 4 == 2) {
+                            image.style.maxWidth = '200px';
+                            image.style.maxHeight = '150px';
+                            image.style.minWidth = '200px';
+                            image.style.minHeight = '150px';
+                        } else {
+                            image.style.maxWidth = '150px';
+                            image.style.maxHeight = '200px';
+                            image.style.minWidth = '150px';
+                            image.style.minHeight = '200px';
+                        }
+
+                        image.src = data.url;
+                        imagesContainerDiv.appendChild(image);
+                    }
+                    galleryDiv.appendChild(imagesContainerDiv);
+                }
+
+            }
+            document.body.appendChild(galleryDiv);
+
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
