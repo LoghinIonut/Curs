@@ -1,0 +1,186 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        .container {
+            margin-left: 300px;
+            width: 300px;
+            height: 500px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .background {
+            width: 300px;
+            height: 500px;
+            position: relative;
+            box-sizing: border-box;
+            z-index: -1;
+        }
+
+        .black {
+            top: 0;
+            background: rgb(0, 0, 0);
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            box-sizing: border-box;
+        }
+
+        .white {
+            top: 300px;
+            background: rgb(250, 245, 245);
+            position: absolute;
+            width: 300px;
+            height: 150px;
+            box-sizing: border-box;
+        }
+
+        .blue {
+            top: 450px;
+            background: rgb(205, 205, 243);
+            position: absolute;
+            width: 300px;
+            height: 50px;
+            box-sizing: border-box;
+        }
+
+        .formContainer {
+            top: -475px;
+            width: 260px;
+            height: 450px;
+            z-index: 1;
+            position: relative;
+            background-color: rgb(192, 152, 65);
+            border-radius: 5%;
+            left: 20px;
+            box-sizing: border-box;
+        }
+
+        h4 {
+            position: absolute;
+            margin-top: 20px;
+            margin-left: 30px;
+        }
+
+        .formElem {
+            display: flex;
+            position: absolute;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 80px;
+            margin-left: 30px;
+            box-sizing: border-box;
+        }
+
+        #form {
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            box-sizing: border-box;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 5px;
+        }
+
+        .firstRow {
+            display: flex;
+            width: 206px;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 10px;
+
+        }
+
+        .secondRow {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 206px;
+        }
+
+        .twoInLine {
+            display: inline-block;
+            width: 90px;
+            margin-top: 5px;
+        }
+
+        .oneLine {
+            margin-top: 5px;
+        }
+
+
+        button {
+            position: absolute;
+            bottom: 50px;
+            width: 200px;
+            margin-left: 30px;
+            height: 30px;
+            background-color: rgb(4, 14, 59);
+            color: rgb(192, 152, 65);
+            border-radius: 5%;
+            border: none;
+            font-size: 0.8em;
+            ;
+        }
+
+        ::placeholder {
+            color: rgb(161, 157, 157);
+            padding-left: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="background">
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="blue"></div>
+        </div>
+        <div class="formContainer">
+
+            <form>
+                <h4>Complete the form for <br> your salesforce needs</h4>
+                <div class="formElem">
+                    <div id="form">
+                        <input class="oneLine" type="text" id="name" placeholder="I need salesforce help with">
+                    </div>
+
+                    <div class="firstRow">
+                        <div><input class="twoInLine" id="firstName" type="text" placeholder="First Name"></div>
+                        <div><input class="twoInLine" id="lastName" type="text" placeholder="Last Name"></div>
+                    </div>
+                    <div class="secondRow">
+                        <div><input class="twoInLine" id="email" type="email" placeholder="Email"></div>
+                        <div><input class="twoInLine" id="phone" placeholder="Phone"></div>
+                    </div>
+                    <div id="form">
+                        <input class="oneLine" type="text" placeholder="Your Role">
+                    </div>
+                    <div id="form">
+                        <input class="oneLine" type="text" placeholder="Company">
+                    </div>
+                    <div id="form">
+                        <input class="oneLine" type="text" placeholder="Web Address">
+                    </div>
+                </div>
+
+                <button>Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

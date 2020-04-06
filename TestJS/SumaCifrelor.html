@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        .content {
+            background-color: rgb(7, 167, 74);
+            width: 700px;
+            height: 400px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .leftSide {
+            width: 340px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            background-color: rgb(7, 167, 74);
+        }
+
+        .rightSide {
+            width: 340px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            background-color: rgb(7, 167, 74);
+            margin-left: 10px;
+        }
+
+        .inputs {
+            width: 200px;
+            height: 30px;
+            display: inline-block;
+            left: 100px;
+            position: absolute;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+
+        .numberContainer {
+            height: 30px;
+            position: relative;
+        }
+
+        .regular-checkbox {
+            display: inline-block;
+            height: 30px;
+            width: 50px;
+            line-height: 30px;
+            background-color: rgb(183, 247, 183);
+            position: absolute;
+            left: 150px;
+            text-align: center;
+            font-size: 0.7em;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .inputLabel {
+            display: inline-block;
+            position: absolute;
+            font-size: 1em;
+            left: 5px;
+            padding-left: 10px;
+            height: 30px;
+            line-height: 30px;
+            width: 100px;
+            background-color: rgb(7, 167, 74);
+        }
+
+        .outputLabel {
+            display: inline-block;
+            position: absolute;
+            font-size: 1em;
+            padding-left: 10px;
+            height: 30px;
+            line-height: 30px;
+            width: 230px;
+            background-color: rgb(7, 167, 74);
+        }
+
+
+
+        .myInput {
+            left: 5px;
+            width: 134px;
+            display: inline-block;
+            height: 28px;
+            position: absolute;
+            background-color: white;
+            border: none;
+            text-align: center;
+        }
+
+        .output {
+            width: 120px;
+            background-color: white;
+            height: 30px;
+            line-height: 30px;
+            display: inline-block;
+            position: absolute;
+            left: 222px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.8em;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        ::placeholder {
+            font-size: 0.8em;
+        }
+
+
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var numbers = {
+            0: "",
+            1: "I",
+            2: "II",
+            3: "III",
+            4: "IV",
+            5: "V",
+            6: "VI",
+            7: "VII",
+            8: "VIII",
+            9: "IX",
+            10: "X",
+            20: "XX",
+            30: "XXX",
+            40: "XL",
+            50: "L",
+            60: "LX",
+            70: "LXX",
+            80: "LXXX",
+            90: "XC",
+            100: "C",
+            200: "CC",
+            300: "CCC",
+            400: "CD",
+            500: "D",
+            600: "DC",
+            700: "DCC",
+            800: "DCCC",
+            900: "CM",
+            1000: "M",
+            2000: "MM",
+            3000: "MMM",
+            4000: "MMMM",
+            5000: "MMMMM"
+        }
+        var inputUnitati;
+        var inputZeci;
+        var inputSute;
+        var inputMii;
+
+        function start() {
+            inputUnitatiElem = document.getElementById("unitati");
+            inputZeciElem = document.getElementById("zeci");
+            inputSuteElem = document.getElementById("sute");
+            inputMiiElem = document.getElementById("mii");
+
+            checkbox1.addEventListener("click", checkIfNumberUnitati);
+            checkbox2.addEventListener("click", checkIfNumberZeci);
+            checkbox3.addEventListener("click", checkIfNumberSute);
+            checkbox4.addEventListener("click", checkIfNumberMii);
+
+            inputUnitatiElem.addEventListener("input", result);
+            inputZeciElem.addEventListener("input", result);
+            inputSuteElem.addEventListener("input", result);
+            inputMiiElem.addEventListener("input", result);
+        }
+
+        function checkIfNumberUnitati() {
+            var numberToCheckU = inputUnitatiElem.value;
+            if (isNaN(numberToCheckU)) {
+                alert("not a number");
+                inputUnitatiElem.value = 0;
+            } else {
+                checkbox1.innerHTML = '\&#10004 OK';
+            }
+        }
+
+        function checkIfNumberZeci() {
+            let numberToCheckZ = inputZeciElem.value;
+
+            if (isNaN(numberToCheckZ)) {
+                alert("not a number");
+                inputZeciElem.value = 0;
+            }
+            else {
+                checkbox2.innerHTML = '\&#10004 OK';
+            }
+        }
+
+        function checkIfNumberSute() {
+            let numberToCheckS = inputSuteElem.value;
+            if (isNaN(numberToCheckS)) {
+                alert("not a number");
+                inputSuteElem.value = 0;
+            } else {
+                checkbox3.innerHTML = '\&#10004 OK';
+            }
+        }
+
+        function checkIfNumberMii() {
+            let numberToCheckM = inputMiiElem.value;
+            if (isNaN(numberToCheckM)) {
+                alert("not a number");
+                inputMiiElem.value = 0;
+            } else if (inputMiiElem.value > 4) {
+                alert("you need to enter a number between 0 and 4");
+                inputMiiElem.value = 4;
+            } else {
+                checkbox4.innerHTML = '\&#10004 OK';
+            }
+        }
+
+
+        function result() {
+            var string = "";
+            var inputUnitatiValue = +inputUnitatiElem.value;
+            var inputZeciValue = +inputZeciElem.value;
+            var inputSuteValue = +inputSuteElem.value;
+            var inputMiiValue = +inputMiiElem.value;
+
+            if (inputMiiValue > 4) {
+                alert("enter a value between 0 and 4");
+                inputMiiValue = 4;
+            }
+
+            var sum = inputUnitatiValue + inputZeciValue * 10 + inputSuteValue * 100 + inputMiiValue * 1000;
+            var sumaAraba = document.getElementById("sumaAraba");
+            sumaAraba.innerText = sum;
+
+            var sumaRomanaElem = document.getElementById("sumaRomana");
+            string += numbers[inputMiiValue * 1000] + numbers[inputSuteValue * 100] + numbers[inputZeciValue * 10] + numbers[inputUnitatiValue];
+            sumaRomanaElem.innerText = string;
+ 
+            var isPrimeDiv = document.getElementById("numarPrim");
+            var nrDivizori = 0;
+            if (sum > 2 && sum % 2 == 0) {
+                isPrimeDiv.innerText = "NU";
+            } else if (sum == 2) {
+                isPrimeDiv.innerText = "DA";
+            } else {
+                for (var i = 3; i <= sum / 2; i += 2) {
+                    if (sum % i == 0) {
+                        nrDivizori++;
+                    }
+                }
+                if (nrDivizori == 0) {
+                    isPrimeDiv.innerText = "DA";
+                } else {
+                    isPrimeDiv.innerText = "NU";
+                }
+            };
+
+            var isEvenDiv = document.getElementById("numarPar");
+            if (inputUnitatiValue % 2 == 0) {
+                isEvenDiv.innerText = "DA";
+            } else {
+                isEvenDiv.innerText = "NU";
+            }
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div class="content">
+        <div class="leftSide">
+            <div class="numberContainer">
+                <label for="unitati" class="inputLabel">Unitati</label>
+                <div class="inputs">
+                    <input class="myInput" id="unitati" type="text" maxlength="1"
+                        placeholder="Enter a number between 0 and 9">
+                    <div class="regular-checkbox" id="checkbox1"> Submit </div>
+                </div>
+            </div>
+
+            <div class="numberContainer">
+                <label for="zeci" class="inputLabel">Zeci</label>
+                <div class="inputs">
+                    <input class="myInput" id="zeci" type="text" maxlength="1"
+                        placeholder="Enter a number between 0 and 9">
+                    <div class="regular-checkbox" id="checkbox2">Submit </div>
+                </div>
+            </div>
+
+            <div class="numberContainer">
+                <label for="sute" class="inputLabel">Sute</label>
+                <div class="inputs">
+                    <input class="myInput" id="sute" type="text" maxlength="1"
+                        placeholder="Enter a number between 0 and 9">
+                    <div class="regular-checkbox" id="checkbox3">Submit </div>
+                </div>
+            </div>
+
+            <div class="numberContainer">
+                <label for="mii" class="inputLabel">Mii</label>
+                <div class="inputs">
+                    <input class="myInput" id="mii" type="text" maxlength="1" max="4"
+                        placeholder="Enter a number between 0 and 4">
+                    <div class="regular-checkbox" id="checkbox4">Submit </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rightSide">
+            <div class="numberContainer">
+                <label for="suma" class="outputLabel">Suma in cifre arabe: </label>
+                <div class="output" id="sumaAraba"></div>
+            </div>
+
+            <div class="numberContainer">
+                <label for="suma" class="outputLabel">Suma in cifre romane: </label>
+                <div class="output" id="sumaRomana"></div>
+            </div>
+
+            <div class="numberContainer">
+                <label for="prim" class="outputLabel">Numarul obtinut este prim: </label>
+                <div class="output" id="numarPrim"></div>
+            </div>
+
+            <div class="numberContainer">
+                <label for="par" class="outputLabel">Numarul obtinut este par: </label>
+                <div class="output" id="numarPar"></div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
