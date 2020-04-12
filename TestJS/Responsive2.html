@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .container {
+            overflow-y: auto;
+            width: 100%;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            border: none;
+            position: relative;
+            font-family: 'Times New Roman', Times, serif
+        }
+
+        .right {
+            height: 100%;
+            overflow-y: auto;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .left {
+            height: 100%;
+            position: absolute;
+            background-color: white;
+        }
+
+        .tab {
+            height: 75px;
+            line-height: 75px;
+            background-color: white;
+        }
+
+        .tab:hover {
+            background-color: rgb(230, 235, 240);
+        }
+
+        .headerDiv {
+            background-color: rgb(73, 148, 129);
+            line-height: 200px;
+            vertical-align: middle;
+            position: relative;
+            color: white;
+            font-size: 2em;
+        }
+
+        .headerDiv>span {
+            display: inline-block;
+            padding-left: 10%;
+        }
+
+        .box {
+            position: absolute;
+            margin-top: -20px;
+            left: 3%;
+        }
+
+        .descriptionContainer {
+            margin-left: 10%;
+            margin-right: 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: stretch;
+        }
+
+        .description {
+            width: 70%;
+            height: 170px;
+
+        }
+
+        .moreDetails {
+            height: 150px;
+            background-color: white;
+            box-sizing: border-box;
+            border-left: 3px solid rgb(73, 148, 129);
+            overflow-y: auto;
+        }
+
+        .textDescr {
+            display: inline-block;
+            padding-left: 5%;
+            line-height: 30px;
+            font-size: 0.7em;
+        }
+
+        .exampleContainer {
+            height: 350px;
+        }
+
+        .title {
+            font-size: 2em;
+            color: rgb(73, 148, 129);
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-weight: bolder;
+            font-size: 1em;
+        }
+
+        .titleOfDemo {
+            font-size: 1.4em;
+            font-weight: bolder;
+            color: rgb(73, 148, 129);
+            line-height: 50px;
+        }
+
+        .example {
+            background-color: rgb(230, 235, 240);
+            height: 300px;
+            padding-left: 2%;
+            padding-right: 2%;
+        }
+
+
+        .exampleName {
+            font-size: 1.1em;
+            font-weight: bolder;
+        }
+
+        .code {
+            margin-top: 10px;
+            width: 90%;
+            height: 255px;
+            margin-left: 5%;
+            background-color: white;
+            box-sizing: border-box;
+            border-left: 3px solid rgb(73, 148, 129);
+        }
+
+        .leftVisible {
+            line-height: 50px;
+            width: 100%;
+            position: absolute;
+            background-color: white;
+            text-align: center;
+            z-index: 1;
+            margin-top: 0;
+            transition: margin-top 0.5s;
+        }
+
+        @media (min-width:320px) and (max-width: 768px) {
+            .box {
+                position: absolute;
+                top: -50px;
+                left: 3%;
+            }
+
+            .right {
+                top: 0;
+                width: 100%;
+                z-index: 0;
+            }
+
+            .left {
+                margin-top: -1200px;
+            }
+
+        }
+            @media (min-width:768px) {
+                .container {
+                    position: relative;
+                    width: 100%;
+                }
+
+                .box {
+                    display: none;
+                }
+
+                .left {
+                    position: absolute;
+                    display: inline-block;
+                    width: 30%;
+                    margin-top: 0;
+                    text-align: center;
+                }
+
+                .right {
+                    left: 30%;
+                    position: absolute;
+                    display: inline-block;
+                    width: 70%;
+                }
+            }
+
+
+           
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        function start() {
+            var box = document.getElementById("boxID");
+            box.onclick = display;
+        }
+        function display() {
+            var menu = document.getElementById("leftID");
+            menu.className = "leftVisible";
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div class=container>
+        <div class="left" id="leftID">
+            <div class="tab">w3schools.com</div>
+            <div class="tab">Home</div>
+            <div class="tab">Typography</div>
+            <div class="tab">Colors</div>
+            <div class="tab">Utilities</div>
+            <div class="tab">Containers</div>
+            <div class="tab">Buttons</div>
+            <div class="tab">Cards</div>
+            <div class="tab">Alerts</div>
+            <div class="tab">Tables</div>
+        </div>
+        <div class="right">
+            <div class=headerDiv><span> W3.CSS</span>
+                <div class="box" id="boxID"><i class="fa fa-bars" style="font-size:24px;color:white"></i>
+                </div>
+            </div>
+            <div class="descriptionContainer">
+                <div class="description">
+                    <p><span class="title">What is W3.CSS?</span><br><br><span class="subtitle">Contrary to popular
+                            belief, Lorem Ipsum is not simply random text.</span></p>
+                    <br>
+                </div>
+                <div class="moreDetails"><span class="textDescr">Smaller and faster than other CSS frameworks.<br>Easier
+                        to learn, and easier to use than other CSS frameworks.<br>Uses standard CSS only (No jQuery or
+                        JavaScript library).<br>Speeds up mobile HTML apps.<br>
+                        Provides CSS equality for all devices. PC, laptop, tablet, and mobile:</span></div>
+                <div class="exampleContainer">
+                    <div class="titleOfDemo">Demo</div>
+                    <div class="example"> <span class="exampleName">Example</span>
+                        <div class="code"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
